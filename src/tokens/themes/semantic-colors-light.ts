@@ -68,9 +68,9 @@ export const semanticColorsLight = {
   // Border – neutral
   "border.neutral.input": grey[200],
   "border.neutral.input-bold": grey[300],
-  "border.neutral.subtle": grey[200],
-  "border.neutral.auxillary": grey[300],
-  "border.neutral.disabled": grey[100],
+  "border.neutral.subtle": black[50],
+  "border.neutral.auxillary": grey[100],
+  "border.neutral.disabled": black[100],
   "border.neutral.overlay": grey[200],
 
   // Border – colored
@@ -89,7 +89,7 @@ export const semanticColorsLight = {
   "text.neutral.secondary": grey[600],
   "text.neutral.tertiary": grey[500],
   "text.neutral.ghost": grey[400],
-  "text.neutral.disabled": grey[400],
+  "text.neutral.disabled": black[200],
   "text.neutral.inverse": white.full,
   "text.neutral.inverse-secondary": white[700],
 
@@ -112,7 +112,7 @@ export const semanticColorsLight = {
   "icon.neutral.secondary": grey[600],
   "icon.neutral.tertiary": grey[500],
   "icon.neutral.inverse": white.full,
-  "icon.neutral.disabled": grey[400],
+  "icon.neutral.disabled": black[200],
 
   // Icon – colored
   "icon.colored.link": blue[500],
