@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import * as LucideIcons from "lucide-react";
 import { SimpleLabelValue } from "./SimpleLabelValue";
@@ -81,7 +81,8 @@ function SimpleLabelValueStoryWrapper({
 }
 
 const meta = {
-  title: "Components/SimpleLabelValue",
+  id: "components-simplelabelvalue",
+  title: "Components/Simple Label Value",
   component: SimpleLabelValueStoryWrapper,
   parameters: {
     layout: "centered",

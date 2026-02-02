@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import * as LucideIcons from "lucide-react";
 import { IconLabel } from "./IconLabel";
@@ -76,7 +76,8 @@ function IconLabelStoryWrapper({
 }
 
 const meta = {
-  title: "Components/IconLabel",
+  id: "components-iconlabel",
+  title: "Components/Icon Label",
   component: IconLabelStoryWrapper,
   parameters: {
     layout: "centered",

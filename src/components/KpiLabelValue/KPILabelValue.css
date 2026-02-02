@@ -1,0 +1,145 @@
+/**
+ * KPILabelValue – Figma layer hierarchy: [ Icon | Content column ].
+ * Spacing (all sizes): 8px icon↔content; spacer-none (0) value row↔label; 4px value↔unit.
+ */
+
+.orion-kpi-label-value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-4); /* 8px between icon and content */
+}
+
+.orion-kpi-label-value__content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-none); /* spacer-none: 0 between value row and label */
+}
+
+.orion-kpi-label-value__value-row {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--spacing-2); /* 4px between value and unit */
+}
+
+/* Icon: sibling of content block, tertiary hierarchy (Figma: subdued grey). */
+.orion-kpi-label-value__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-neutral-tertiary);
+  flex-shrink: 0;
+}
+
+/* ---- Size: Primary (metrics xx-large) ---- */
+.orion-kpi-label-value--primary .orion-kpi-label-value__icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: var(--font-metrics-xx-large-size);
+}
+
+.orion-kpi-label-value--primary .orion-kpi-label-value__value {
+  font-family: var(--font-metrics-xx-large-family);
+  font-size: var(--font-metrics-xx-large-size);
+  font-weight: var(--font-metrics-xx-large-weight);
+  line-height: var(--font-metrics-xx-large-line-height);
+  letter-spacing: var(--font-metrics-xx-large-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--primary .orion-kpi-label-value__unit {
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--primary .orion-kpi-label-value__label {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: 0;
+}
+
+/* ---- Size: Secondary (metrics x-large) ---- */
+.orion-kpi-label-value--secondary .orion-kpi-label-value__icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: var(--font-metrics-x-large-size);
+}
+
+.orion-kpi-label-value--secondary .orion-kpi-label-value__value {
+  font-family: var(--font-metrics-x-large-family);
+  font-size: var(--font-metrics-x-large-size);
+  font-weight: var(--font-metrics-x-large-weight);
+  line-height: var(--font-metrics-x-large-line-height);
+  letter-spacing: var(--font-metrics-x-large-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--secondary .orion-kpi-label-value__unit {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--secondary .orion-kpi-label-value__label {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: 0;
+}
+
+/* ---- Size: Tertiary (metrics large) ---- */
+.orion-kpi-label-value--tertiary .orion-kpi-label-value__icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: var(--font-metrics-large-size);
+}
+
+.orion-kpi-label-value--tertiary .orion-kpi-label-value__value {
+  font-family: var(--font-metrics-large-family);
+  font-size: var(--font-metrics-large-size);
+  font-weight: var(--font-metrics-large-weight);
+  line-height: var(--font-metrics-large-line-height);
+  letter-spacing: var(--font-metrics-large-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--tertiary .orion-kpi-label-value__unit {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-kpi-label-value--tertiary .orion-kpi-label-value__label {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: 0;
+}
