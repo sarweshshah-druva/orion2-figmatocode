@@ -1,0 +1,35 @@
+/**
+ * IconLabel – layout and typography via design tokens only.
+ * No extra backgrounds, borders, or padding beyond what defines the component.
+ */
+
+.orion-icon-label {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.orion-icon-label__label {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: 0;
+}
+
+.orion-icon-label__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-neutral-secondary);
+  flex-shrink: 0;
+}
+
+.orion-icon-label__icon svg {
+  width: 1em;
+  height: 1em;
+  font-size: var(--font-body-small-size);
+}

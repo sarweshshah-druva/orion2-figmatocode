@@ -9,10 +9,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "jsx": "react-jsx",
     "rootDir": ".",
     "baseUrl": ".",
-    "paths": {}
+    "paths": {},
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts",
+    "vitest.setup.ts"
+  ],
   "exclude": ["node_modules"]
 }
