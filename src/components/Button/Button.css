@@ -1,0 +1,183 @@
+/**
+ * Button – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 555-8049).
+ */
+
+.orion-button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.orion-button:focus-visible {
+  outline: 2px solid var(--border-colored-focused);
+  outline-offset: 2px;
+}
+
+.orion-button:disabled {
+  cursor: not-allowed;
+}
+
+/* ----- Variants ----- */
+
+.orion-button--primary {
+  background-color: var(--bg-action-primary);
+  color: var(--text-neutral-inverse);
+}
+
+.orion-button--primary:hover:not(:disabled) {
+  background-color: var(--bg-action-primary-hover);
+}
+
+.orion-button--primary:disabled {
+  background-color: var(--bg-element-default);
+  color: var(--text-neutral-disabled);
+}
+
+.orion-button--secondary {
+  background-color: var(--bg-action-secondary);
+  border-color: var(--border-neutral-subtle);
+  color: var(--text-colored-brand);
+}
+
+.orion-button--secondary:hover:not(:disabled) {
+  background-color: var(--bg-action-secondary-hover);
+  border-color: var(--border-neutral-auxillary);
+}
+
+.orion-button--secondary:disabled {
+  background-color: var(--bg-element-subtle);
+  border-color: var(--border-neutral-disabled);
+  color: var(--text-neutral-disabled);
+}
+
+.orion-button--link {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-link-default);
+  text-decoration: none;
+}
+
+.orion-button--link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.orion-button--link:disabled {
+  color: var(--text-neutral-disabled);
+  text-decoration: none;
+}
+
+.orion-button--icon {
+  background-color: var(--bg-action-tertiary);
+  border-color: transparent;
+  color: var(--text-neutral-primary);
+}
+
+.orion-button--icon:hover:not(:disabled) {
+  background-color: var(--bg-action-tertiary-hover);
+}
+
+.orion-button--icon:disabled {
+  color: var(--text-neutral-disabled);
+}
+
+.orion-button--danger {
+  background-color: var(--bg-status-danger-solid);
+  border-color: transparent;
+  color: var(--text-neutral-inverse);
+}
+
+.orion-button--danger:hover:not(:disabled) {
+  background-color: var(--bg-status-danger-solid-hover);
+}
+
+.orion-button--danger:disabled {
+  background-color: var(--bg-element-default);
+  color: var(--text-neutral-disabled);
+}
+
+/* ----- Sizes ----- */
+
+/* Medium: 8px vertical, 16px horizontal; 8px gap. Reuses body/medium (14px, weight 400). */
+.orion-button--medium {
+  padding: var(--spacing-4) var(--spacing-6);
+  gap: var(--spacing-4);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+}
+
+.orion-button--medium .orion-button__icon {
+  font-size: var(--font-body-medium-size);
+}
+
+/* Small: 4px vertical, 12px horizontal; 4px gap. Reuses body/small (12px, weight 400). */
+.orion-button--small {
+  padding: var(--spacing-2) var(--spacing-5);
+  gap: var(--spacing-2);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+.orion-button--small .orion-button__icon {
+  font-size: var(--font-body-small-size);
+}
+
+/* Large: 10px vertical, 20px horizontal; 8px gap. Reuses body/large (16px, weight 400). */
+.orion-button--large {
+  padding: var(--spacing-5) var(--spacing-7);
+  gap: var(--spacing-4);
+  font-family: var(--font-body-large-family);
+  font-size: var(--font-body-large-size);
+  font-weight: var(--font-body-large-weight);
+  line-height: var(--font-body-large-line-height);
+  letter-spacing: var(--font-body-large-letter-spacing);
+}
+
+.orion-button--large .orion-button__icon {
+  font-size: var(--font-body-large-size);
+}
+
+/* Icon variant: square padding (same on all sides) for icon-only buttons. */
+.orion-button--icon.orion-button--small {
+  padding: var(--spacing-2);
+  gap: 0;
+}
+
+.orion-button--icon.orion-button--medium {
+  padding: var(--spacing-4);
+  gap: 0;
+}
+
+.orion-button--icon.orion-button--large {
+  padding: var(--spacing-5);
+  gap: 0;
+}
+
+.orion-button__label {
+  font: inherit;
+}
+
+.orion-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.orion-button__icon svg {
+  width: 1em;
+  height: 1em;
+}

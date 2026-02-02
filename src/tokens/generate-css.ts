@@ -35,4 +35,3 @@ ${darkVars}
 
 const outPath = path.join(__dirname, "css-variables.css");
 fs.writeFileSync(outPath, css, "utf-8");
-console.log("Wrote", outPath);

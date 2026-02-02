@@ -9,8 +9,10 @@ body {
   font-family: var(--font-body-medium-family, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-surface-default);
 }
 
 #root {
   min-height: 100vh;
+  background-color: var(--bg-surface-default);
 }

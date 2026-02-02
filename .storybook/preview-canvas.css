@@ -1,0 +1,33 @@
+/**
+ * Override Storybook's main canvas so it uses the design-token surface background
+ * and responds to theme (data-theme="dark"). Storybook's backgrounds addon injects
+ * fixed colors with !important; higher specificity (html .selector) ensures our theme wins.
+ *
+ * - body: preview root (e.g. docs story iframes) so all canvases look the same
+ * - .sb-show-main: Canvas tab (single story view)
+ * - .docs-story: Docs page (each story block in docs)
+ *
+ * 8px grid: subtle lines every 8px for alignment. Grid color is theme-aware:
+ * light theme = dark lines on light background; dark theme = light lines on dark background.
+ * Dark theme rule sets background-image explicitly so grid color is correct in all contexts.
+ */
+html body,
+html .sb-show-main,
+html .docs-story {
+  --grid-spacing: 8px;
+  background-color: var(--bg-surface-default) !important;
+  /* Light theme: dark lines (visible on light background) */
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
+  background-size: var(--grid-spacing) var(--grid-spacing);
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .sb-show-main,
+html[data-theme="dark"] .docs-story {
+  /* Dark theme: light lines (visible on dark background) – explicit so it wins everywhere */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.075) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+}
