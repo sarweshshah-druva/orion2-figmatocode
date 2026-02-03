@@ -21,7 +21,7 @@ export type {
   SplitButtonVariant,
   SplitButtonSize,
 } from "./Buttons/SplitButton";
-export { Tag } from "./Tag";
-export type { TagProps, TagVariant } from "./Tag";
-export { Badge } from "./Badge";
-export type { BadgeProps, BadgeVariant } from "./Badge";
+export { Tag } from "./Tags & Badges/Tag";
+export type { TagProps, TagVariant } from "./Tags & Badges/Tag";
+export { Badge } from "./Tags & Badges/Badge";
+export type { BadgeProps, BadgeVariant } from "./Tags & Badges/Badge";

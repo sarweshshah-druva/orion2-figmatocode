@@ -94,14 +94,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: var(--spacing-none);
   padding: var(--spacing-1);
   border: none;
   border-radius: var(--radius-xs);
   background: transparent;
   color: currentColor;
   font: inherit;
-  line-height: 1;
+  line-height: var(--font-captions-xx-small-line-height);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }

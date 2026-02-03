@@ -87,8 +87,8 @@ function TagStoryWrapper({
 }
 
 const meta = {
-  id: "components-tag",
-  title: "Components/Tag",
+  id: "components-tags-and-badges-tag",
+  title: "Components/Tags & Badges/Tag",
   component: TagStoryWrapper,
   parameters: {
     layout: "centered",

@@ -74,7 +74,7 @@ export function Tag({
           aria-label="Remove tag"
           tabIndex={disabled ? -1 : 0}
         >
-          <X size={14} aria-hidden />
+          <X aria-hidden />
         </button>
       ) : null}
     </span>

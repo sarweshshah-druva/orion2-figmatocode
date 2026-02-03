@@ -1,0 +1,84 @@
+/**
+ * Badge – layout, typography, and variants via design tokens only.
+ * Orion v2.0 (Figma node 35-1735).
+ */
+
+.orion-badge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  min-width: var(--spacing-6);
+  border: var(--radius-2xs) solid transparent;
+  border-radius: var(--radius-full);
+  margin: var(--spacing-none);
+  box-sizing: border-box;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+/* ----- Variants ----- */
+
+.orion-badge--neutral {
+  background-color: var(--bg-element-subtle);
+  border-color: var(--border-neutral-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-badge--success {
+  background-color: var(--bg-status-success-subtle);
+  border-color: var(--border-colored-success-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-badge--warning {
+  background-color: var(--bg-status-warning-subtle);
+  border-color: var(--border-colored-warning-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-badge--danger {
+  background-color: var(--bg-status-danger-subtle);
+  border-color: var(--border-colored-danger-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-badge--info {
+  background-color: var(--bg-status-info-subtle);
+  border-color: var(--border-colored-info-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-badge--disabled {
+  opacity: var(--opacity-6);
+  pointer-events: none;
+}
+
+.orion-badge .orion-badge__icon,
+.orion-badge .orion-badge__end-icon {
+  font-size: var(--font-body-small-size);
+}
+
+.orion-badge__icon,
+.orion-badge__end-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.orion-badge__icon svg,
+.orion-badge__end-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.orion-badge__label {
+  font: inherit;
+}
