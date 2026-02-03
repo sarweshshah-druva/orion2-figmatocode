@@ -32,7 +32,16 @@ mcp_Figma_Desktop_get_screenshot({
 
 ### 3. **Use Design Tokens - Never Hardcode Values**
 
-Always use design tokens for ALL styling properties. NEVER hardcode values when tokens are available.
+**!IMPORTANT** If a token exists for **color**, **typography**, **spacing**, **radii**, **opacity**, or **effects** (e.g. elevation, focus ring), **use it**. Never hardcode those values in component CSS.
+
+- **Color** – Use semantic tokens from the library (e.g. `--text-neutral-primary`, `--bg-action-primary`, `--bg-status-info-subtle`, `--border-colored-focused`). Use **semantic / library tokens for UI components**; reserve dataviz tokens (e.g. `--dataviz-categorical-*`) for charts and data visualization only.
+- **Typography** – Use the full text-style tokens (font-family, font-size, line-height, font-weight, letter-spacing) from `--font-*` (e.g. `--font-body-medium-family`, `--font-body-medium-size`, etc.).
+- **Spacing** – Use `--spacing-none` through `--spacing-20` (e.g. padding, gap, margin). Use `--spacing-none` for zero, not `0`.
+- **Radii** – Use `--radius-*` (e.g. `--radius-sm`, `--radius-full`). For 1px stroke/divider width use `--radius-2xs` where appropriate.
+- **Opacity** – Use `--opacity-0` through `--opacity-full` (e.g. overlays, disabled state).
+- **Effects** – Use `--elevation-*`, `--focus-ring` (or documented focus token) where available.
+
+When a token exists for a property, use the token. This keeps the design system consistent and themeable.
 
 ### 4. **Use the Same Prop Names as Figma**
 
@@ -386,11 +395,11 @@ export function Component({ label, value }: ComponentProps) {
 ```
 
 ```css
-/* CORRECT - Simple as defined */
+/* CORRECT - Simple as defined; use tokens only (no fallback values) */
 .orion-component {
   display: inline-flex;
   flex-direction: column;
-  gap: var(--spacing-2, 4px);
+  gap: var(--spacing-2);
 }
 ```
 
@@ -426,10 +435,20 @@ export function Component({ label, value }: ComponentProps) {
 .component {
   opacity: 0.6;
 }
+
+/* WRONG - Hardcoded zero or small dimensions; use tokens */
+.component {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: 1px solid var(--border-neutral-input);
+  outline: 2px solid var(--border-colored-focused);
+  outline-offset: 2px;
+}
 ```
 
 ```css
-/* CORRECT - Use design tokens for everything */
+/* CORRECT - Use design tokens for everything (color, typography, spacing, radii, opacity) */
 .component__label {
   font-size: var(--body-small-font-size);
   line-height: var(--body-small-line-height);
@@ -437,10 +456,21 @@ export function Component({ label, value }: ComponentProps) {
   letter-spacing: var(--body-small-letter-spacing);
 }
 
+/* CORRECT - Zero and small dimensions use tokens */
+.component {
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  gap: var(--spacing-none);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+  opacity: var(--opacity-6);
+}
+
 .component {
   color: var(--text-neutral-secondary);
   background-color: var(--bg-surface-card);
-  border: 1px solid var(--border-neutral-input);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
   gap: var(--spacing-2);
   padding: var(--spacing-5);
   margin: var(--spacing-4);
@@ -985,6 +1015,7 @@ All color tokens are theme-aware and automatically switch between light and dark
 
 - [ ] Accessed Figma design programmatically
 - [ ] Reviewed screenshot for visual accuracy
+- [ ] **Used design tokens for every property when a token exists** (color, typography, spacing, radii, opacity, effects). No hardcoded px, hex, or numeric values for those. Use `--spacing-none` for zero; `--radius-2xs` for 1px stroke/divider; `--spacing-1` for 2px outline; `--opacity-*` for opacity. Use semantic/library tokens for UI (not dataviz for components).
 - [ ] Used design tokens for typography (not hardcoded sizes)
 - [ ] Used design tokens for colors (not hardcoded hex values)
 - [ ] Used design tokens for spacing (not hardcoded pixels)
@@ -1165,14 +1196,14 @@ When building components, test in both themes:
 1. **Ask if unclear** - Don't guess or assume
 2. **Use Figma tools** - Always access programmatically with `mcp_Figma_Desktop_get_design_context`
 3. **Keep it simple** - Only build what's shown in Figma
-4. **Use tokens for EVERYTHING** - Never hardcode any values
+4. **Use tokens whenever one exists** - If a token exists for color, typography, spacing, radii, opacity, or effects, use it. Never hardcode those values. Use `--spacing-none` for zero; `--radius-2xs` for 1px stroke/divider; `--spacing-1` for 2px outline; `--opacity-*` for opacity. Use semantic/library tokens for UI components; reserve dataviz tokens for charts and data visualization only.
    - Typography: Use complete text style tokens (font-family, font-size, line-height, font-weight, letter-spacing)
    - Colors: Use semantic color tokens (theme-aware)
-   - Spacing: Use spacing tokens (--spacing-1 through --spacing-20)
-   - Border radius: Use radius tokens (--radius-none through --radius-full)
+   - Spacing: Use spacing tokens (--spacing-none, --spacing-1 through --spacing-20)
+   - Border radius / 1px stroke: Use radius tokens (--radius-2xs for 1px, --radius-none through --radius-full)
    - Opacity: Use opacity tokens (--opacity-0 through --opacity-full)
    - Effects: Use elevation and focus ring tokens
-5. **Never hardcode values** - Always use CSS variables (no fallback values needed)
+5. **Never hardcode values** - Always use CSS variables (no fallback values like `var(--spacing-2, 4px)`)
 6. **Match hierarchy** - Respect Figma layer parent-child relationships
 7. **No extras** - No cards, shadows, padding, or enhancements unless explicitly in Figma design
 8. **Theme-aware** - Use CSS variables for all colors to support automatic light/dark theme switching
