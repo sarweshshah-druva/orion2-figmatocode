@@ -21,3 +21,5 @@ export type {
   SplitButtonVariant,
   SplitButtonSize,
 } from "./SplitButton";
+export { Tag } from "./Tag";
+export type { TagProps, TagVariant } from "./Tag";

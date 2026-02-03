@@ -1,0 +1,121 @@
+/**
+ * Tag – layout, typography, and variants via design tokens only.
+ * Orion v2.0 (Figma node 35-467).
+ */
+
+.orion-tag {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2);
+  border: var(--radius-2xs) solid transparent;
+  border-radius: var(--radius-sm);
+  margin: var(--spacing-none);
+  box-sizing: border-box;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+.orion-tag:focus-within {
+  outline: none;
+}
+
+.orion-tag__remove:focus-visible {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+/* ----- Variants ----- */
+
+.orion-tag--neutral {
+  background-color: var(--bg-element-subtle);
+  border-color: var(--border-neutral-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-tag--success {
+  background-color: var(--bg-status-success-subtle);
+  border-color: var(--border-colored-success-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-tag--warning {
+  background-color: var(--bg-status-warning-subtle);
+  border-color: var(--border-colored-warning-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-tag--danger {
+  background-color: var(--bg-status-danger-subtle);
+  border-color: var(--border-colored-danger-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-tag--info {
+  background-color: var(--bg-status-info-subtle);
+  border-color: var(--border-colored-info-subtle);
+  color: var(--text-neutral-primary);
+}
+
+.orion-tag--disabled {
+  opacity: var(--opacity-6);
+  pointer-events: none;
+}
+
+.orion-tag .orion-tag__icon {
+  font-size: var(--font-body-small-size);
+}
+
+/* ----- Parts ----- */
+
+.orion-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.orion-tag__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Label and value share the same font (body-small via .orion-tag). Both optional. */
+.orion-tag__label {
+  font: inherit;
+}
+
+.orion-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: var(--spacing-1);
+  border: none;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: currentColor;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.orion-tag__remove:hover:not(:disabled) {
+  background-color: var(--bg-element-default);
+}
+
+.orion-tag__remove:disabled {
+  cursor: not-allowed;
+}
+
+.orion-tag__remove svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
