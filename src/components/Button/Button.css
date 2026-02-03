@@ -8,16 +8,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid transparent;
+  border: var(--radius-2xs) solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  margin: 0;
+  margin: var(--spacing-none);
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .orion-button:focus-visible {
-  outline: 2px solid var(--border-colored-focused);
-  outline-offset: 2px;
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
 }
 
 .orion-button:disabled {
@@ -152,17 +152,17 @@
 /* Icon variant: square padding (same on all sides) for icon-only buttons. */
 .orion-button--icon.orion-button--small {
   padding: var(--spacing-2);
-  gap: 0;
+  gap: var(--spacing-none);
 }
 
 .orion-button--icon.orion-button--medium {
   padding: var(--spacing-4);
-  gap: 0;
+  gap: var(--spacing-none);
 }
 
 .orion-button--icon.orion-button--large {
   padding: var(--spacing-5);
-  gap: 0;
+  gap: var(--spacing-none);
 }
 
 .orion-button__label {

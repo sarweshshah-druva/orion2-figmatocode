@@ -17,7 +17,7 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-secondary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-simple-label-value__value-row {
@@ -34,7 +34,7 @@
   line-height: var(--font-body-medium-line-height);
   letter-spacing: var(--font-body-medium-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-simple-label-value__value-icon {

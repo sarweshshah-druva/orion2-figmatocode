@@ -47,7 +47,7 @@
   line-height: var(--font-metrics-xx-large-line-height);
   letter-spacing: var(--font-metrics-xx-large-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--primary .orion-kpi-label-value__unit {
@@ -57,7 +57,7 @@
   line-height: var(--font-body-medium-line-height);
   letter-spacing: var(--font-body-medium-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--primary .orion-kpi-label-value__label {
@@ -67,7 +67,7 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-secondary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 /* ---- Size: Secondary (metrics x-large) ---- */
@@ -84,7 +84,7 @@
   line-height: var(--font-metrics-x-large-line-height);
   letter-spacing: var(--font-metrics-x-large-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--secondary .orion-kpi-label-value__unit {
@@ -94,7 +94,7 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--secondary .orion-kpi-label-value__label {
@@ -104,7 +104,7 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-secondary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 /* ---- Size: Tertiary (metrics large) ---- */
@@ -121,7 +121,7 @@
   line-height: var(--font-metrics-large-line-height);
   letter-spacing: var(--font-metrics-large-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--tertiary .orion-kpi-label-value__unit {
@@ -131,7 +131,7 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-primary);
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 .orion-kpi-label-value--tertiary .orion-kpi-label-value__label {
@@ -141,5 +141,5 @@
   line-height: var(--font-body-small-line-height);
   letter-spacing: var(--font-body-small-letter-spacing);
   color: var(--text-neutral-secondary);
-  margin: 0;
+  margin: var(--spacing-none);
 }

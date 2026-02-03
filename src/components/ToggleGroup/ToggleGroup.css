@@ -11,9 +11,9 @@
   flex-direction: row;
   align-items: stretch;
   gap: var(--spacing-none);
-  padding: 0;
+  padding: var(--spacing-none);
   background: transparent;
-  border: 1px solid var(--border-colored-brand);
+  border: var(--radius-2xs) solid var(--border-colored-brand);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
@@ -29,10 +29,12 @@
   background-color: var(--bg-input-default);
   border: none;
   border-radius: var(--radius-none);
-  border-left: 1px solid var(--border-colored-brand);
+  border-left-width: var(--radius-2xs);
+  border-left-style: solid;
+  border-left-color: var(--border-colored-brand);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
-  margin: 0;
+  margin: var(--spacing-none);
 }
 
 /* Small: 4px vertical, 12px horizontal; 4px gap. Body small. */
@@ -94,8 +96,8 @@
 }
 
 .orion-toggle-group-item:focus-visible {
-  outline: 2px solid var(--border-colored-focused);
-  outline-offset: 2px;
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
 }
 
 /* Selected (Figma: deep blue bg, white text + icon) */
