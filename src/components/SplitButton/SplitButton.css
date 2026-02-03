@@ -1,0 +1,193 @@
+/**
+ * Split Button – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 67-2932).
+ * Two segments: main (label) + divider + trigger (chevron).
+ */
+
+.orion-split-button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-radius: var(--radius-sm);
+  margin: var(--spacing-none);
+  overflow: hidden;
+  border: var(--radius-2xs) solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* ----- Variants ----- */
+
+.orion-split-button--primary {
+  background-color: var(--bg-action-primary);
+  border-color: transparent;
+  color: var(--text-neutral-inverse);
+}
+
+.orion-split-button--primary:hover:not(.orion-split-button--disabled) {
+  background-color: var(--bg-action-primary-hover);
+}
+
+.orion-split-button--primary.orion-split-button--disabled {
+  background-color: var(--bg-element-default);
+  color: var(--text-neutral-disabled);
+}
+
+.orion-split-button--secondary {
+  background-color: var(--bg-action-secondary);
+  border-color: var(--border-neutral-subtle);
+  color: var(--text-colored-brand);
+}
+
+.orion-split-button--secondary:hover:not(.orion-split-button--disabled) {
+  background-color: var(--bg-action-secondary-hover);
+  border-color: var(--border-neutral-auxillary);
+}
+
+.orion-split-button--secondary.orion-split-button--disabled {
+  background-color: var(--bg-element-subtle);
+  border-color: var(--border-neutral-disabled);
+  color: var(--text-neutral-disabled);
+}
+
+/* ----- Segment buttons ----- */
+
+.orion-split-button__main,
+.orion-split-button__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: var(--spacing-none);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  transition: background-color 0.15s ease;
+}
+
+/* Segment padding set per size below; uses Figma 67-2932 variable defs (spacer-2/3/4 → 6/8/12px). */
+
+.orion-split-button__main:focus-visible,
+.orion-split-button__trigger:focus-visible {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: calc(-1 * var(--spacing-1));
+}
+
+.orion-split-button__trigger:focus-visible {
+  outline-offset: calc(-1 * var(--spacing-1));
+}
+
+.orion-split-button--disabled .orion-split-button__main,
+.orion-split-button--disabled .orion-split-button__trigger {
+  cursor: not-allowed;
+}
+
+/* ----- Divider ----- */
+
+.orion-split-button__divider {
+  width: var(--radius-2xs);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.orion-split-button--primary .orion-split-button__divider {
+  background-color: currentColor;
+  opacity: var(--opacity-3);
+}
+
+.orion-split-button--secondary .orion-split-button__divider {
+  background-color: var(--border-neutral-subtle);
+}
+
+.orion-split-button--secondary.orion-split-button--disabled .orion-split-button__divider {
+  background-color: var(--border-neutral-disabled);
+}
+
+/* ----- Sizes ----- */
+/* Figma 67-2932 variable defs: spacer-2=6px, spacer-3=8px, spacer-4=12px → --spacing-3, --spacing-4, --spacing-5. */
+
+/* Small: vertical spacer-2 (6px), horizontal spacer-4 (12px), gap spacer-3 (8px), trigger spacer-2 (6px). */
+.orion-split-button--small .orion-split-button__main {
+  padding: var(--spacing-3) var(--spacing-4) var(--spacing-3) var(--spacing-5);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+.orion-split-button--small .orion-split-button__trigger {
+  padding: var(--spacing-3);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+.orion-split-button--small .orion-split-button__icon {
+  font-size: var(--font-body-small-size);
+}
+
+/* Medium: vertical spacer-3 (8px), horizontal spacer-4 (12px), gap spacer-3 (8px), trigger spacer-3 (8px). */
+.orion-split-button--medium .orion-split-button__main {
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) var(--spacing-5);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+}
+
+.orion-split-button--medium .orion-split-button__trigger {
+  padding: var(--spacing-4);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+}
+
+.orion-split-button--medium .orion-split-button__icon {
+  font-size: var(--font-body-medium-size);
+}
+
+/* Large: vertical spacer-4 (12px), horizontal spacer-4 (12px), gap spacer-3 (8px), trigger spacer-4 (12px). */
+.orion-split-button--large .orion-split-button__main {
+  padding: var(--spacing-5) var(--spacing-4) var(--spacing-5) var(--spacing-5);
+  font-family: var(--font-body-large-family);
+  font-size: var(--font-body-large-size);
+  font-weight: var(--font-body-large-weight);
+  line-height: var(--font-body-large-line-height);
+  letter-spacing: var(--font-body-large-letter-spacing);
+}
+
+.orion-split-button--large .orion-split-button__trigger {
+  padding: var(--spacing-5);
+  font-family: var(--font-body-large-family);
+  font-size: var(--font-body-large-size);
+  font-weight: var(--font-body-large-weight);
+  line-height: var(--font-body-large-line-height);
+  letter-spacing: var(--font-body-large-letter-spacing);
+}
+
+.orion-split-button--large .orion-split-button__icon {
+  font-size: var(--font-body-large-size);
+}
+
+.orion-split-button__label {
+  font: inherit;
+}
+
+.orion-split-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.orion-split-button__icon svg {
+  width: 1em;
+  height: 1em;
+}

@@ -15,3 +15,9 @@ export type {
   ToggleGroupVariant,
   ToggleGroupItemSize,
 } from "./ToggleGroup";
+export { SplitButton } from "./SplitButton";
+export type {
+  SplitButtonProps,
+  SplitButtonVariant,
+  SplitButtonSize,
+} from "./SplitButton";
