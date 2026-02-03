@@ -1,0 +1,84 @@
+/**
+ * Avatar – layout, typography, and color via design tokens only.
+ * Orion v2.0 (Figma node 67-2956).
+ */
+
+.orion-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: none;
+}
+
+.orion-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.orion-avatar__initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+}
+
+/* ----- Sizes ----- */
+
+.orion-avatar--small {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  font-family: var(--font-body-small-strong-family);
+  font-size: var(--font-body-small-strong-size);
+  font-weight: var(--font-body-small-strong-weight);
+  line-height: var(--font-body-small-strong-line-height);
+  letter-spacing: var(--font-body-small-strong-letter-spacing);
+}
+
+.orion-avatar--medium {
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  font-family: var(--font-body-medium-strong-family);
+  font-size: var(--font-body-medium-strong-size);
+  font-weight: var(--font-body-medium-strong-weight);
+  line-height: var(--font-body-medium-strong-line-height);
+  letter-spacing: var(--font-body-medium-strong-letter-spacing);
+}
+
+.orion-avatar--large {
+  width: var(--spacing-13);
+  height: var(--spacing-13);
+  font-family: var(--font-headings-medium-family);
+  font-size: var(--font-headings-medium-size);
+  font-weight: var(--font-headings-medium-weight);
+  line-height: var(--font-headings-medium-line-height);
+  letter-spacing: var(--font-headings-medium-letter-spacing);
+}
+
+/* ----- Variants (semantic status: info, success, warning, danger) ----- */
+
+.orion-avatar--variant-1 {
+  background-color: var(--bg-status-info-subtle);
+  color: var(--text-colored-info-bold);
+}
+
+.orion-avatar--variant-2 {
+  background-color: var(--bg-status-success-subtle);
+  color: var(--text-colored-success-bold);
+}
+
+.orion-avatar--variant-3 {
+  background-color: var(--bg-status-warning-subtle);
+  color: var(--text-colored-warning-bold);
+}
+
+.orion-avatar--variant-4 {
+  background-color: var(--bg-status-danger-subtle);
+  color: var(--text-colored-danger-bold);
+}

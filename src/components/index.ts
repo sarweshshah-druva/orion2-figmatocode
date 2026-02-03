@@ -1,3 +1,5 @@
+export { Avatar } from "./Avatar";
+export type { AvatarProps, AvatarSize, AvatarVariant } from "./Avatar";
 export { Button } from "./Button";
 export type { ButtonProps, ButtonVariant, ButtonSize } from "./Button";
 export { IconLabel } from "./IconLabel";
