@@ -631,6 +631,39 @@ Show basic usage only:
 <Component value={1234} label="Label" disabled />
 ```
 
+### 7. Storybook: Conditional Controls for Boolean-Linked Props
+
+When a prop has an associated boolean that toggles it (e.g. **showIcon** + **icon**, **showStartIcon** + **startIcon**), only show the option control when the boolean is enabled. Use Storybook `argTypes` with `if` so the dependent control is hidden when the toggle is off.
+
+**Example (Icon Label):** The icon select is shown only when "Show icon" is true:
+
+```tsx
+argTypes: {
+  showLeftIcon: {
+    control: "boolean",
+    description: "Show icon before the label",
+  },
+  leftIcon: {
+    control: "select",
+    options: ICON_OPTIONS,
+    description: "Lucide icon before the label",
+    if: { arg: "showLeftIcon" },  // only show this control when showLeftIcon is true
+  },
+  showRightIcon: {
+    control: "boolean",
+    description: "Show icon after the label",
+  },
+  rightIcon: {
+    control: "select",
+    options: ICON_OPTIONS,
+    description: "Lucide icon after the label",
+    if: { arg: "showRightIcon" },
+  },
+}
+```
+
+Apply this pattern wherever you have a boolean + option pair (e.g. showIcon + icon, showStartIcon + startIcon, showValueIcon + valueIcon). It keeps the Controls panel relevant and avoids showing icon/option pickers when the feature is off.
+
 ## Design Token Reference
 
 ### Typography
@@ -961,6 +994,7 @@ All color tokens are theme-aware and automatically switch between light and dark
 - [ ] Only includes props that exist in Figma
 - [ ] Prop names match Figma component properties (camelCase)
 - [ ] Stories added in Storybook (variants, sizes, states); minimal demo = stories (see **storybook-setup.md**)
+- [ ] For boolean-linked props (e.g. showIcon + icon), argTypes use `if: { arg: "showIcon" }` so the option control only shows when enabled
 - [ ] No linter errors
 - [ ] Component exports added to index files
 
