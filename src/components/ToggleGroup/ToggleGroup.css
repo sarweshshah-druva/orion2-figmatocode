@@ -1,0 +1,141 @@
+/**
+ * Toggle Group – Orion v2.0 (Figma node 20-612).
+ * Horizontal strip: rounded outer corners, thin light blue border, vertical dividers between items.
+ * Toggle Group Item – Orion v2.0 (Figma node 2247-21795).
+ * Item: optional icon (left) + label; no corner radius on item (Figma 2247-21795). Selected = primary bg + inverse; unselected = white bg + brand text + border; disabled = subtle bg + disabled.
+ */
+
+/* ----- Group container (Figma 20-612: strip, rounded ends, light blue border) ----- */
+.orion-toggle-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--spacing-none);
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border-colored-brand);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* ----- Item (Figma 2247-21795: icon + label, 3 sizes; no corner radius on item) ----- */
+
+.orion-toggle-group-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  color: var(--text-colored-brand);
+  background-color: var(--bg-input-default);
+  border: none;
+  border-radius: var(--radius-none);
+  border-left: 1px solid var(--border-colored-brand);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  margin: 0;
+}
+
+/* Small: 4px vertical, 12px horizontal; 4px gap. Body small. */
+.orion-toggle-group-item--small {
+  padding: var(--spacing-2) var(--spacing-5);
+  gap: var(--spacing-2);
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+}
+
+.orion-toggle-group-item--small .orion-toggle-group-item__icon {
+  font-size: var(--font-body-small-size);
+}
+
+/* Medium: 8px vertical, 16px horizontal; 8px gap. Body medium. */
+.orion-toggle-group-item--medium {
+  padding: var(--spacing-4) var(--spacing-6);
+  gap: var(--spacing-4);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+}
+
+.orion-toggle-group-item--medium .orion-toggle-group-item__icon {
+  font-size: var(--font-body-medium-size);
+}
+
+/* Large: 12px vertical, 20px horizontal; 8px gap. Body large. */
+.orion-toggle-group-item--large {
+  padding: var(--spacing-5) var(--spacing-7);
+  gap: var(--spacing-4);
+  font-family: var(--font-body-large-family);
+  font-size: var(--font-body-large-size);
+  font-weight: var(--font-body-large-weight);
+  line-height: var(--font-body-large-line-height);
+  letter-spacing: var(--font-body-large-letter-spacing);
+}
+
+.orion-toggle-group-item--large .orion-toggle-group-item__icon {
+  font-size: var(--font-body-large-size);
+}
+
+/* First item: no left divider. Item has no corner radius (Figma 2247-21795); group overflow clips outer corners. */
+.orion-toggle-group-item:first-child {
+  border-left: none;
+}
+
+.orion-toggle-group-item:only-child {
+  border-left: none;
+}
+
+.orion-toggle-group-item:hover:not(:disabled):not(.orion-toggle-group-item--selected) {
+  background-color: var(--bg-surface-default-hover);
+}
+
+.orion-toggle-group-item:focus-visible {
+  outline: 2px solid var(--border-colored-focused);
+  outline-offset: 2px;
+}
+
+/* Selected (Figma: deep blue bg, white text + icon) */
+.orion-toggle-group-item--selected {
+  background-color: var(--bg-action-primary);
+  color: var(--text-neutral-inverse);
+  border-color: var(--border-colored-brand);
+}
+
+.orion-toggle-group-item--selected:hover:not(:disabled) {
+  background-color: var(--bg-action-primary-hover);
+}
+
+.orion-toggle-group-item:disabled {
+  background-color: var(--bg-element-subtle);
+  color: var(--text-neutral-disabled);
+  border-color: var(--border-neutral-disabled);
+  cursor: not-allowed;
+}
+
+.orion-toggle-group-item--selected:disabled {
+  background-color: var(--bg-element-subtle);
+  color: var(--text-neutral-disabled);
+  border-color: var(--border-neutral-disabled);
+}
+
+/* Icon + label (Figma: icon left, text right; color inherits) */
+.orion-toggle-group-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.orion-toggle-group-item__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.orion-toggle-group-item__label {
+  font: inherit;
+}

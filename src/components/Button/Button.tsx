@@ -11,6 +11,7 @@ const hasLabel = (c: ReactNode): boolean =>
   c != null && c !== "" && (typeof c !== "string" || c.trim() !== "");
 
 export function Button({
+  label: labelProp,
   children,
   variant = "primary",
   size = "medium",
@@ -22,6 +23,8 @@ export function Button({
   type = "button",
   ...rest
 }: ButtonProps) {
+  // Figma name: label; support children for idiomatic JSX (<Button>Text</Button>)
+  const label = labelProp ?? children;
   const rootClass = [
     "orion-button",
     `orion-button--${variant}`,
@@ -31,7 +34,7 @@ export function Button({
     .filter(Boolean)
     .join(" ");
 
-  const showLabel = hasLabel(children);
+  const showLabel = hasLabel(label);
 
   return (
     <button
@@ -46,9 +49,7 @@ export function Button({
           {icon}
         </span>
       ) : null}
-      {showLabel ? (
-        <span className="orion-button__label">{children}</span>
-      ) : null}
+      {showLabel ? <span className="orion-button__label">{label}</span> : null}
       {endIcon != null ? (
         <span className="orion-button__icon" aria-hidden>
           {endIcon}

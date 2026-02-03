@@ -143,12 +143,14 @@ const meta = {
       control: "select",
       options: ICON_OPTIONS,
       description: "Start icon (Lucide)",
+      if: { arg: "showStartIcon" },
     },
     showEndIcon: { control: "boolean", description: "Show icon after label" },
     endIcon: {
       control: "select",
       options: ICON_OPTIONS,
       description: "End icon (Lucide)",
+      if: { arg: "showEndIcon" },
     },
     ariaLabel: {
       control: "text",
