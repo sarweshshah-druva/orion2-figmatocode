@@ -101,8 +101,8 @@ function ButtonStoryWrapper({
 }
 
 const meta = {
-  id: "components-button",
-  title: "Components/Button",
+  id: "components-buttons-button",
+  title: "Components/Buttons/Button",
   component: ButtonStoryWrapper,
   parameters: {
     layout: "centered",

@@ -3,8 +3,8 @@ import { SplitButton } from "./SplitButton";
 import type { SplitButtonVariant, SplitButtonSize } from "./SplitButton.types";
 
 const meta = {
-  id: "components-split-button",
-  title: "Components/Split Button",
+  id: "components-buttons-split-button",
+  title: "Components/Buttons/Split Button",
   component: SplitButton,
   parameters: {
     layout: "centered",

@@ -1,7 +1,7 @@
 export { Avatar } from "./Avatar";
 export type { AvatarProps, AvatarSize, AvatarVariant } from "./Avatar";
-export { Button } from "./Button";
-export type { ButtonProps, ButtonVariant, ButtonSize } from "./Button";
+export { Button } from "./Buttons/Button";
+export type { ButtonProps, ButtonVariant, ButtonSize } from "./Buttons/Button";
 export { IconLabel } from "./IconLabel";
 export type { IconLabelProps } from "./IconLabel";
 export { SimpleLabelValue } from "./SimpleLabelValue";
@@ -15,11 +15,13 @@ export type {
   ToggleGroupVariant,
   ToggleGroupItemSize,
 } from "./ToggleGroup";
-export { SplitButton } from "./SplitButton";
+export { SplitButton } from "./Buttons/SplitButton";
 export type {
   SplitButtonProps,
   SplitButtonVariant,
   SplitButtonSize,
-} from "./SplitButton";
+} from "./Buttons/SplitButton";
 export { Tag } from "./Tag";
 export type { TagProps, TagVariant } from "./Tag";
+export { Badge } from "./Badge";
+export type { BadgeProps, BadgeVariant } from "./Badge";
