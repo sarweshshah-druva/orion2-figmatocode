@@ -34,6 +34,10 @@ mcp_Figma_Desktop_get_screenshot({
 
 Always use design tokens for ALL styling properties. NEVER hardcode values when tokens are available.
 
+### 4. **Use the Same Prop Names as Figma**
+
+Component prop names must match Figma component property names, in **camelCase**. Use `mcp_Figma_Desktop_get_design_context` to read the exact property names from the Figma node, then name your React props the same (e.g. Figma "Variant" → `variant`, "Label" → `label`, "Size" → `size`). This keeps design and code aligned and makes handoff predictable. You may still accept idiomatic aliases (e.g. `children` for label content) where it improves DX, but the primary API should use Figma names.
+
 The token system supports:
 
 - **Light/Dark themes** - Automatic theme switching via `data-theme` attribute
@@ -268,7 +272,7 @@ box-shadow: var(--elevation-raised);
 box-shadow: var(--focus-ring);
 ```
 
-### 4. **Respect Layer Hierarchy**
+### 5. **Respect Layer Hierarchy**
 
 Pay close attention to the layer hierarchy in Figma:
 
@@ -531,11 +535,11 @@ From the Figma response, identify:
 
 ### 3. Create Types
 
-Define ONLY the props that exist in Figma:
+Define ONLY the props that exist in Figma, and **use the same names as Figma** (camelCase). Get property names from `get_design_context` (e.g. Variant → `variant`, Label → `label`, Size → `size`).
 
 ```typescript
 export interface ComponentProps {
-  // Required props from Figma
+  // Required props from Figma (same names, camelCase)
   label: string;
   value: string | number;
 
@@ -955,6 +959,7 @@ All color tokens are theme-aware and automatically switch between light and dark
 - [ ] Matched layer hierarchy exactly
 - [ ] No extra styling or features added
 - [ ] Only includes props that exist in Figma
+- [ ] Prop names match Figma component properties (camelCase)
 - [ ] Stories added in Storybook (variants, sizes, states); minimal demo = stories (see **storybook-setup.md**)
 - [ ] No linter errors
 - [ ] Component exports added to index files
