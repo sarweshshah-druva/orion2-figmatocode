@@ -1,0 +1,142 @@
+/**
+ * Switch – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 829-948).
+ */
+
+.orion-switch {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  cursor: pointer;
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  border: var(--spacing-none);
+  background: none;
+  font: inherit;
+  text-align: left;
+}
+
+/* Row: labels and control aligned center; gap from design tokens */
+.orion-switch__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.orion-switch__control {
+  display: inline-flex;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.orion-switch:has(.orion-switch__input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Visually hidden native checkbox (role="switch" set in JS) */
+.orion-switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: var(--spacing-none);
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: var(--spacing-none);
+}
+
+.orion-switch__input:focus-visible + .orion-switch__track {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+/* Track: oval pill (Figma 829-948); off = grey, on = blue */
+.orion-switch__track {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--spacing-12);
+  height: var(--spacing-7);
+  border-radius: var(--radius-full);
+  background-color: var(--border-neutral-input);
+  opacity: var(--opacity-full);
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.orion-switch__input:checked + .orion-switch__track {
+  background-color: var(--bg-action-primary);
+}
+
+.orion-switch__input:disabled + .orion-switch__track {
+  background-color: var(--border-neutral-disabled);
+  opacity: var(--opacity-4);
+}
+
+/* Checked disabled: primary track at 40% opacity (matches Radio checked+disabled) */
+.orion-switch__input:checked:disabled + .orion-switch__track {
+  background-color: var(--bg-action-primary);
+  opacity: var(--opacity-4);
+}
+
+/* Thumb: circle 12px, 4px padding from track edges; vertically centered in 20px track */
+.orion-switch__thumb {
+  position: absolute;
+  top: var(--spacing-2);
+  left: var(--spacing-2);
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  border-radius: var(--radius-full);
+  background-color: var(--icon-neutral-inverse);
+  transition: transform 0.15s ease;
+}
+
+.orion-switch__input:checked + .orion-switch__track .orion-switch__thumb {
+  transform: translateX(var(--spacing-7));
+}
+
+.orion-switch__input:checked:disabled + .orion-switch__track .orion-switch__thumb {
+  background-color: var(--icon-neutral-inverse);
+}
+
+.orion-switch__label-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+}
+
+/* Left text container: right-aligned toward the switch */
+.orion-switch__row .orion-switch__label-block:first-of-type {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.orion-switch__label {
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: var(--spacing-none);
+}
+
+.orion-switch:has(.orion-switch__input:disabled) .orion-switch__label {
+  color: var(--text-neutral-disabled);
+}
+
+.orion-switch__description {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: var(--spacing-none);
+}
+
+.orion-switch:has(.orion-switch__input:disabled) .orion-switch__description {
+  color: var(--text-neutral-disabled);
+}

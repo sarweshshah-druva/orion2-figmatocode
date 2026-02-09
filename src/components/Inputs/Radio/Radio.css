@@ -1,0 +1,122 @@
+/**
+ * Radio – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 62-5884).
+ */
+
+.orion-radio {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  cursor: pointer;
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  border: var(--spacing-none);
+  background: none;
+  font: inherit;
+  text-align: left;
+}
+
+.orion-radio:has(.orion-radio__input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input; keeps keyboard and screen reader behavior */
+.orion-radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: var(--spacing-none);
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: var(--spacing-none);
+}
+
+.orion-radio__input:focus-visible + .orion-radio__indicator {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+/* Circle indicator – unchecked; 16px to match Figma (node 62-5884) */
+.orion-radio__indicator {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  margin-top: var(--spacing-1);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  border-radius: var(--radius-full);
+  background-color: var(--bg-input-default);
+  opacity: var(--opacity-full);
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+/* Checked enabled: solid blue circle, white inner dot (Figma) */
+.orion-radio__input:checked + .orion-radio__indicator {
+  background-color: var(--bg-action-primary);
+}
+
+.orion-radio__input:checked + .orion-radio__indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  border-radius: var(--radius-full);
+  background-color: var(--icon-neutral-inverse);
+}
+
+.orion-radio__input:disabled + .orion-radio__indicator {
+  border-color: var(--border-neutral-disabled);
+  background-color: var(--bg-input-disabled);
+  opacity: var(--opacity-4);
+}
+
+/* Checked disabled: muted light blue circle (no opacity), light gray inner dot (Figma) */
+.orion-radio__input:checked:disabled + .orion-radio__indicator {
+  background-color: var(--bg-action-primary);
+}
+
+.orion-radio__input:checked:disabled + .orion-radio__indicator::after {
+  background-color: var(--icon-neutral-inverse);
+}
+
+/* Content: label + optional description */
+.orion-radio__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  min-width: var(--spacing-none);
+}
+
+.orion-radio__label {
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: var(--spacing-none);
+}
+
+.orion-radio:has(.orion-radio__input:disabled) .orion-radio__label {
+  color: var(--text-neutral-disabled);
+}
+
+.orion-radio__description {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: var(--spacing-none);
+}
+
+.orion-radio:has(.orion-radio__input:disabled) .orion-radio__description {
+  color: var(--text-neutral-disabled);
+}

@@ -112,7 +112,7 @@
   --bg-surface-header: rgb(255, 255, 255);
   --bg-input-default: rgb(255, 255, 255);
   --bg-input-disabled: rgb(234, 238, 242);
-  --bg-input-inset: rgb(234, 238, 242);
+  --bg-input-inset: rgb(230, 230, 231);
   --bg-list-item-default: transparent;
   --bg-list-item-default-hover: rgb(246, 248, 250);
   --bg-list-item-selected: rgb(238, 245, 255);
@@ -136,11 +136,11 @@
   --bg-status-danger-solid-hover: rgb(166, 30, 40);
   --bg-status-info-subtle: rgb(238, 245, 255);
   --bg-colored-accent: rgb(238, 245, 255);
-  --border-neutral-input: rgb(208, 215, 222);
+  --border-neutral-input: rgb(230, 230, 231);
   --border-neutral-input-bold: rgb(175, 184, 193);
   --border-neutral-subtle: rgb(208, 215, 222);
   --border-neutral-auxillary: rgb(175, 184, 193);
-  --border-neutral-disabled: rgb(234, 238, 242);
+  --border-neutral-disabled: rgba(0, 0, 0, 0.1);
   --border-neutral-overlay: rgb(208, 215, 222);
   --border-colored-brand: rgb(33, 113, 181);
   --border-colored-focused: rgb(33, 113, 181);

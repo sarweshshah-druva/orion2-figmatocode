@@ -1,0 +1,134 @@
+/**
+ * Checkbox – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 829-551).
+ */
+
+.orion-checkbox {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  cursor: pointer;
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  border: var(--spacing-none);
+  background: none;
+  font: inherit;
+  text-align: left;
+}
+
+.orion-checkbox:has(.orion-checkbox__input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input */
+.orion-checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: var(--spacing-none);
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: var(--spacing-none);
+}
+
+.orion-checkbox__input:focus-visible + .orion-checkbox__indicator {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+/* Square indicator – unchecked; 16px to match Figma (829-551) */
+.orion-checkbox__indicator {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  margin-top: var(--spacing-1);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-input-default);
+  opacity: var(--opacity-full);
+  transition: border-color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+  color: var(--icon-neutral-inverse);
+}
+
+/* Checked: solid blue square, white checkmark */
+.orion-checkbox__input:checked + .orion-checkbox__indicator,
+.orion-checkbox__input[data-indeterminate="true"] + .orion-checkbox__indicator {
+  border-color: var(--bg-action-primary);
+  background-color: var(--bg-action-primary);
+}
+
+.orion-checkbox__input:disabled + .orion-checkbox__indicator {
+  border-color: var(--border-neutral-disabled);
+  background-color: var(--bg-input-disabled);
+  opacity: var(--opacity-4);
+}
+
+/* Checked disabled / indeterminate disabled: muted light blue, faded icon */
+.orion-checkbox__input:checked:disabled + .orion-checkbox__indicator,
+.orion-checkbox__input[data-indeterminate="true"]:disabled + .orion-checkbox__indicator {
+  border-color: var(--bg-list-item-selected);
+  background-color: var(--bg-action-primary);
+  opacity: var(--opacity-4);
+}
+
+.orion-checkbox__input:checked:disabled + .orion-checkbox__indicator .orion-checkbox__icon,
+.orion-checkbox__input[data-indeterminate="true"]:disabled + .orion-checkbox__indicator .orion-checkbox__icon {
+  color: var(--icon-neutral-inverse);
+}
+
+.orion-checkbox__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  pointer-events: none;
+  color: inherit;
+}
+
+.orion-checkbox__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Content: label + optional description */
+.orion-checkbox__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  min-width: var(--spacing-none);
+}
+
+.orion-checkbox__label {
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+  margin: var(--spacing-none);
+}
+
+.orion-checkbox:has(.orion-checkbox__input:disabled) .orion-checkbox__label {
+  color: var(--text-neutral-disabled);
+}
+
+.orion-checkbox__description {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: var(--spacing-none);
+}
+
+.orion-checkbox:has(.orion-checkbox__input:disabled) .orion-checkbox__description {
+  color: var(--text-neutral-disabled);
+}
