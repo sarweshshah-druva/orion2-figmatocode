@@ -1,0 +1,156 @@
+/**
+ * Textbox – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma nodes 851-25000, 851-24737).
+ */
+
+.orion-textbox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  width: 100%;
+  max-width: 100%;
+}
+
+.orion-textbox__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-height: var(--spacing-11);
+  padding: var(--spacing-4) var(--spacing-5);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-input-default);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.orion-textbox__input-wrap:focus-within {
+  border-color: var(--border-colored-focused);
+  box-shadow: 0 0 0 1px var(--border-colored-focused);
+}
+
+.orion-textbox--error .orion-textbox__input-wrap {
+  border-color: var(--border-colored-error);
+}
+
+.orion-textbox--error .orion-textbox__input-wrap:focus-within {
+  border-color: var(--border-colored-error);
+  box-shadow: 0 0 0 1px var(--border-colored-error);
+}
+
+.orion-textbox--disabled .orion-textbox__input-wrap {
+  border-color: var(--border-neutral-disabled);
+  background-color: var(--bg-input-disabled);
+  opacity: var(--opacity-6);
+}
+
+.orion-textbox--read-only .orion-textbox__input-wrap {
+  background-color: var(--bg-input-disabled);
+  cursor: default;
+}
+
+.orion-textbox--read-only .orion-textbox__input {
+  cursor: default;
+}
+
+.orion-textbox__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-neutral-tertiary);
+  margin: var(--spacing-none);
+}
+
+.orion-textbox--disabled .orion-textbox__icon {
+  color: var(--icon-neutral-disabled);
+}
+
+.orion-textbox__input {
+  flex: 1;
+  min-width: 0;
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  border: var(--spacing-none);
+  background: none;
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+}
+
+.orion-textbox__input::placeholder {
+  color: var(--text-neutral-tertiary);
+}
+
+.orion-textbox__input:disabled {
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+.orion-textbox__input:focus {
+  outline: none;
+}
+
+.orion-textbox__end-slot {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-neutral-tertiary);
+}
+
+.orion-textbox--disabled .orion-textbox__end-slot {
+  color: var(--icon-neutral-disabled);
+}
+
+.orion-textbox__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1);
+  margin: calc(-1 * var(--spacing-1));
+  border: var(--spacing-none);
+  border-radius: var(--radius-xs);
+  background: none;
+  color: var(--icon-neutral-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.orion-textbox__clear:hover {
+  color: var(--icon-neutral-primary);
+  background-color: var(--bg-element-subtle);
+}
+
+.orion-textbox__clear:focus-visible {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+.orion-textbox__description {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-neutral-secondary);
+  margin: var(--spacing-none);
+}
+
+.orion-textbox--disabled .orion-textbox__description {
+  color: var(--text-neutral-disabled);
+}
+
+.orion-textbox__error {
+  font-family: var(--font-body-small-family);
+  font-size: var(--font-body-small-size);
+  font-weight: var(--font-body-small-weight);
+  line-height: var(--font-body-small-line-height);
+  letter-spacing: var(--font-body-small-letter-spacing);
+  color: var(--text-colored-error);
+  margin: var(--spacing-none);
+}

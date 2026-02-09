@@ -31,3 +31,5 @@ export { Radio } from "./Inputs/Radio";
 export type { RadioProps } from "./Inputs/Radio";
 export { Switch } from "./Inputs/Switch";
 export type { SwitchProps } from "./Inputs/Switch";
+export { Textbox } from "./Textbox";
+export type { TextboxProps } from "./Textbox";
