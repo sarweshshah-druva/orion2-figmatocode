@@ -16,9 +16,8 @@
 .orion-textbox__input-wrap {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  min-height: var(--spacing-11);
-  padding: var(--spacing-4) var(--spacing-5);
+  gap: var(--spacing-2);
+  padding: var(--spacing-none) var(--spacing-4);
   border: var(--radius-2xs) solid var(--border-neutral-input);
   border-radius: var(--radius-sm);
   background-color: var(--bg-input-default);
@@ -26,8 +25,8 @@
 }
 
 .orion-textbox__input-wrap:focus-within {
+  border-width: 2px;
   border-color: var(--border-colored-focused);
-  box-shadow: 0 0 0 1px var(--border-colored-focused);
 }
 
 .orion-textbox--error .orion-textbox__input-wrap {
@@ -35,22 +34,17 @@
 }
 
 .orion-textbox--error .orion-textbox__input-wrap:focus-within {
+  border-width: 2px;
   border-color: var(--border-colored-error);
-  box-shadow: 0 0 0 1px var(--border-colored-error);
 }
 
 .orion-textbox--disabled .orion-textbox__input-wrap {
   border-color: var(--border-neutral-disabled);
   background-color: var(--bg-input-disabled);
-  opacity: var(--opacity-6);
 }
 
 .orion-textbox--read-only .orion-textbox__input-wrap {
   background-color: var(--bg-input-disabled);
-  cursor: default;
-}
-
-.orion-textbox--read-only .orion-textbox__input {
   cursor: default;
 }
 
@@ -71,7 +65,7 @@
   flex: 1;
   min-width: 0;
   margin: var(--spacing-none);
-  padding: var(--spacing-none);
+  padding: var(--spacing-4) var(--spacing-1);
   border: var(--spacing-none);
   background: none;
   font-family: var(--font-body-medium-family);
@@ -83,7 +77,7 @@
 }
 
 .orion-textbox__input::placeholder {
-  color: var(--text-neutral-tertiary);
+  color: var(--text-neutral-ghost);
 }
 
 .orion-textbox__input:disabled {
@@ -91,11 +85,16 @@
   cursor: not-allowed;
 }
 
+.orion-textbox--read-only .orion-textbox__input {
+  color: var(--text-neutral-secondary);
+  cursor: default;
+}
+
 .orion-textbox__input:focus {
   outline: none;
 }
 
-.orion-textbox__end-slot {
+.orion-textbox__dropdown {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -103,11 +102,12 @@
   color: var(--icon-neutral-tertiary);
 }
 
-.orion-textbox--disabled .orion-textbox__end-slot {
+.orion-textbox--disabled .orion-textbox__dropdown {
   color: var(--icon-neutral-disabled);
 }
 
 .orion-textbox__clear {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,12 +132,12 @@
 }
 
 .orion-textbox__description {
-  font-family: var(--font-body-small-family);
-  font-size: var(--font-body-small-size);
-  font-weight: var(--font-body-small-weight);
-  line-height: var(--font-body-small-line-height);
-  letter-spacing: var(--font-body-small-letter-spacing);
-  color: var(--text-neutral-secondary);
+  font-family: var(--font-captions-x-small-family);
+  font-size: var(--font-captions-x-small-size);
+  font-weight: var(--font-captions-x-small-weight);
+  line-height: var(--font-captions-x-small-line-height);
+  letter-spacing: var(--font-captions-x-small-letter-spacing);
+  color: var(--text-neutral-tertiary);
   margin: var(--spacing-none);
 }
 
@@ -146,11 +146,11 @@
 }
 
 .orion-textbox__error {
-  font-family: var(--font-body-small-family);
-  font-size: var(--font-body-small-size);
-  font-weight: var(--font-body-small-weight);
-  line-height: var(--font-body-small-line-height);
-  letter-spacing: var(--font-body-small-letter-spacing);
+  font-family: var(--font-captions-x-small-family);
+  font-size: var(--font-captions-x-small-size);
+  font-weight: var(--font-captions-x-small-weight);
+  line-height: var(--font-captions-x-small-line-height);
+  letter-spacing: var(--font-captions-x-small-letter-spacing);
   color: var(--text-colored-error);
   margin: var(--spacing-none);
 }

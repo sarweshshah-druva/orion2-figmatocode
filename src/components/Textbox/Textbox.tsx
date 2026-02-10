@@ -1,22 +1,26 @@
 import { forwardRef, useId, useCallback, useState } from "react";
-import { X } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 import type { TextboxProps } from "./Textbox.types";
 import "./Textbox.css";
 
-const TEXTBOX_ICON_SIZE = 16;
+const ICON_SIZE = 16;
 
 /**
  * Textbox – Orion v2.0 (Figma nodes 851-25000, 851-24737).
- * Single-line text input: no label; optional description/error; icon, endIcon, clear. States: default, focused, disabled, error.
+ * Single-line text input. Trailing slot is built-in per Figma states:
+ *   - Default / Disabled / Read-Only → dropdown chevron (if showDropdown)
+ *   - Filled / Focused / Error (has value) → clear X button
+ * Uses design tokens only. Use Lucide React for leftIcon.
  */
 export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
   (
     {
-      description,
-      error,
-      icon,
-      endIcon,
-      clearable = false,
+      descriptionText,
+      errorText,
+      showDescription = true,
+      showDropdown = true,
+      showLeftIcon = true,
+      leftIcon,
       onClear,
       className = "",
       testId,
@@ -33,13 +37,17 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
   ) => {
     const generatedId = useId();
     const id = idProp ?? generatedId;
-    const hasError = error != null && error !== "";
-    const descriptionId = description && !hasError ? `${id}-description` : undefined;
-    const errorId = hasError ? `${id}-error` : undefined;
-    const ariaDescribedby = [ariaDescribedbyProp, descriptionId, errorId]
-      .filter(Boolean)
-      .join(" ")
-      || undefined;
+    const hasError = errorText != null && errorText !== "";
+    const descriptionId =
+      showDescription && descriptionText && !hasError
+        ? `${id}-description`
+        : undefined;
+    const errorId =
+      showDescription && hasError ? `${id}-error` : undefined;
+    const ariaDescribedby =
+      [ariaDescribedbyProp, descriptionId, errorId]
+        .filter(Boolean)
+        .join(" ") || undefined;
 
     const isControlled = value !== undefined;
     const [uncontrolledValue, setUncontrolledValue] = useState(
@@ -50,7 +58,11 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
       typeof effectiveValue === "string"
         ? effectiveValue !== ""
         : effectiveValue != null && String(effectiveValue) !== "";
-    const showClear = clearable && hasValue && !disabled && endIcon == null;
+
+    // Figma: clear X shows in Filled/Focused/Error (has value + not disabled + not readOnly)
+    const showClear = hasValue && !disabled && !readOnly;
+    // Figma: dropdown chevron shows in Default/Disabled/Read-Only (no value or disabled/readOnly)
+    const showChevron = showDropdown && !showClear;
 
     const handleChange = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,17 +94,17 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
     return (
       <div className={rootClass} data-testid={testId}>
         <div className="orion-textbox__input-wrap">
-          {icon != null ? (
+          {showLeftIcon && leftIcon != null ? (
             <span className="orion-textbox__icon" aria-hidden>
-              {icon}
+              {leftIcon}
             </span>
           ) : null}
           <input
             ref={ref}
             id={id}
             className="orion-textbox__input"
-            value={isControlled ? value : (clearable ? uncontrolledValue : undefined)}
-            defaultValue={isControlled || clearable ? undefined : defaultValue}
+            value={isControlled ? value : uncontrolledValue}
+            defaultValue={undefined}
             disabled={disabled}
             readOnly={readOnly}
             aria-invalid={hasError}
@@ -100,29 +112,29 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
             onChange={handleChange}
             {...rest}
           />
-          <span className="orion-textbox__end-slot" aria-hidden={!showClear}>
-            {showClear ? (
-              <button
-                type="button"
-                className="orion-textbox__clear"
-                onClick={handleClear}
-                tabIndex={-1}
-                aria-label="Clear"
-              >
-                <X size={TEXTBOX_ICON_SIZE} aria-hidden />
-              </button>
-            ) : (
-              endIcon
-            )}
-          </span>
+          {showClear ? (
+            <button
+              type="button"
+              className="orion-textbox__clear"
+              onClick={handleClear}
+              tabIndex={-1}
+              aria-label="Clear"
+            >
+              <X size={ICON_SIZE} aria-hidden />
+            </button>
+          ) : showChevron ? (
+            <span className="orion-textbox__dropdown" aria-hidden>
+              <ChevronDown size={ICON_SIZE} />
+            </span>
+          ) : null}
         </div>
-        {hasError ? (
+        {showDescription && hasError ? (
           <span className="orion-textbox__error" id={errorId} role="alert">
-            {error}
+            {errorText}
           </span>
-        ) : description != null ? (
+        ) : showDescription && descriptionText != null ? (
           <span className="orion-textbox__description" id={descriptionId}>
-            {description}
+            {descriptionText}
           </span>
         ) : null}
       </div>

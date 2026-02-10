@@ -2,25 +2,29 @@ import type { InputHTMLAttributes } from "react";
 
 /**
  * Textbox – Orion v2.0, Figma nodes 851-25000, 851-24737.
- * No label in Figma. Prop names: description (optional), error, icon, endIcon, placeholder, disabled, value.
- * States: default, focused, disabled, error, read-only. Use Lucide React for icon and endIcon.
+ * Prop names match Figma: descriptionText, errorText, showDescription, showDropdown, showLeftIcon, leftIcon.
+ * States: Default, Filled, Focused, Disabled, Read-Only, Error.
+ * Use Lucide React for leftIcon (e.g. Search).
+ * Trailing slot is built-in: dropdown chevron (Default/Disabled/Read-Only) or clear X (Filled/Focused/Error).
  */
 export interface TextboxProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,
     "size" | "className" | "aria-invalid" | "aria-describedby"
   > {
-  /** Description (Figma): optional helper text below the input. */
-  description?: React.ReactNode;
-  /** Error (Figma): when set, shows error state and this message below. */
-  error?: React.ReactNode;
-  /** Icon (Figma): optional leading icon. Use Lucide React (e.g. Search). */
-  icon?: React.ReactNode;
-  /** End icon (Figma): optional trailing icon (e.g. ChevronDown). Use Lucide React. */
-  endIcon?: React.ReactNode;
-  /** When true and input has value, show clear (X) and call onClear when clicked. */
-  clearable?: boolean;
-  /** Called when clear button is clicked. */
+  /** descriptionText (Figma): optional helper text below the input. */
+  descriptionText?: React.ReactNode;
+  /** errorText (Figma): when set, shows error state and this message in red below. */
+  errorText?: React.ReactNode;
+  /** showDescription (Figma): whether to show description or error text below. Default true. */
+  showDescription?: boolean;
+  /** showDropdown (Figma): show trailing dropdown chevron in Default/Disabled/Read-Only states. Default true. */
+  showDropdown?: boolean;
+  /** showLeftIcon (Figma): show the leading icon slot. Default true. */
+  showLeftIcon?: boolean;
+  /** leftIcon (Figma): optional leading icon. Use Lucide React (e.g. Search). */
+  leftIcon?: React.ReactNode;
+  /** Called when clear (X) button is clicked. */
   onClear?: () => void;
   /** Optional class name for the root wrapper. */
   className?: string;

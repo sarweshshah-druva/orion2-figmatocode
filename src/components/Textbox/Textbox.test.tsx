@@ -8,25 +8,35 @@ describe("Textbox", () => {
     expect(screen.getByPlaceholderText("Enter value")).toBeInTheDocument();
   });
 
-  it("renders description when provided", () => {
+  it("renders descriptionText when showDescription is true", () => {
     render(
-      <Textbox description="Helper text" placeholder="Placeholder" />
+      <Textbox
+        descriptionText="Helper text"
+        showDescription
+        placeholder="P"
+      />
     );
     expect(screen.getByText("Helper text")).toBeInTheDocument();
   });
 
-  it("renders without description (description is optional)", () => {
-    const { container } = render(<Textbox placeholder="P" />);
-    expect(screen.getByPlaceholderText("P")).toBeInTheDocument();
+  it("hides descriptionText when showDescription is false", () => {
+    const { container } = render(
+      <Textbox
+        descriptionText="Helper text"
+        showDescription={false}
+        placeholder="P"
+      />
+    );
     expect(container.querySelector(".orion-textbox__description")).toBeNull();
   });
 
-  it("renders error instead of description when error is set", () => {
+  it("renders errorText instead of description when errorText is set", () => {
     render(
       <Textbox
-        description="Helper text"
-        error="Invalid value"
-        placeholder="Placeholder"
+        descriptionText="Helper text"
+        errorText="Invalid value"
+        showDescription
+        placeholder="P"
       />
     );
     expect(screen.getByText("Invalid value")).toBeInTheDocument();
@@ -34,32 +44,76 @@ describe("Textbox", () => {
     expect(screen.getByRole("alert")).toHaveTextContent("Invalid value");
   });
 
-  it("sets aria-invalid when error is set", () => {
-    render(<Textbox error="Error" placeholder="P" />);
+  it("hides errorText when showDescription is false", () => {
+    const { container } = render(
+      <Textbox
+        errorText="Invalid"
+        showDescription={false}
+        placeholder="P"
+      />
+    );
+    expect(container.querySelector(".orion-textbox__error")).toBeNull();
+  });
+
+  it("sets aria-invalid when errorText is set", () => {
+    render(<Textbox errorText="Error" placeholder="P" />);
     expect(screen.getByPlaceholderText("P")).toHaveAttribute(
       "aria-invalid",
       "true"
     );
   });
 
-  it("renders icon (leading) when provided", () => {
+  it("renders leftIcon when showLeftIcon is true", () => {
     render(
       <Textbox
-        icon={<span data-testid="leading-icon">Icon</span>}
+        showLeftIcon
+        leftIcon={<span data-testid="leading-icon">Icon</span>}
         placeholder="P"
       />
     );
     expect(screen.getByTestId("leading-icon")).toBeInTheDocument();
   });
 
-  it("renders endIcon (trailing) when provided", () => {
+  it("hides leftIcon when showLeftIcon is false", () => {
     render(
       <Textbox
-        endIcon={<span data-testid="end-icon">End</span>}
+        showLeftIcon={false}
+        leftIcon={<span data-testid="leading-icon">Icon</span>}
         placeholder="P"
       />
     );
-    expect(screen.getByTestId("end-icon")).toBeInTheDocument();
+    expect(screen.queryByTestId("leading-icon")).not.toBeInTheDocument();
+  });
+
+  it("shows dropdown chevron when showDropdown and no value (Default state)", () => {
+    const { container } = render(
+      <Textbox showDropdown placeholder="P" />
+    );
+    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
+    expect(container.querySelector(".orion-textbox__clear")).toBeNull();
+  });
+
+  it("shows clear X instead of dropdown when input has value (Filled state)", () => {
+    const { container } = render(
+      <Textbox showDropdown placeholder="P" value="hello" onChange={() => {}} />
+    );
+    expect(container.querySelector(".orion-textbox__clear")).not.toBeNull();
+    expect(container.querySelector(".orion-textbox__dropdown")).toBeNull();
+  });
+
+  it("shows dropdown when disabled even with showDropdown", () => {
+    const { container } = render(
+      <Textbox showDropdown placeholder="P" disabled />
+    );
+    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
+  });
+
+  it("shows dropdown when readOnly even with value", () => {
+    const { container } = render(
+      <Textbox showDropdown placeholder="P" value="text" readOnly />
+    );
+    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
+    expect(container.querySelector(".orion-textbox__clear")).toBeNull();
   });
 
   it("respects disabled state", () => {
@@ -87,29 +141,11 @@ describe("Textbox", () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it("shows clear button when clearable and value is not empty (controlled)", () => {
-    render(
-      <Textbox
-        placeholder="P"
-        clearable
-        value="some value"
-        onChange={() => {}}
-      />
-    );
-    expect(screen.getByRole("button", { name: "Clear" })).toBeInTheDocument();
-  });
-
-  it("does not show clear button when clearable but value is empty", () => {
-    render(<Textbox placeholder="P" clearable value="" onChange={() => {}} />);
-    expect(screen.queryByRole("button", { name: "Clear" })).not.toBeInTheDocument();
-  });
-
   it("calls onClear when clear button is clicked (controlled)", () => {
     const onClear = vi.fn();
     render(
       <Textbox
         placeholder="P"
-        clearable
         value="x"
         onChange={() => {}}
         onClear={onClear}
@@ -119,9 +155,14 @@ describe("Textbox", () => {
     expect(onClear).toHaveBeenCalledTimes(1);
   });
 
-  it("associates description with input via aria-describedby when no error", () => {
+  it("associates descriptionText with input via aria-describedby", () => {
     render(
-      <Textbox description="Help text" placeholder="P" id="tb" />
+      <Textbox
+        descriptionText="Help text"
+        showDescription
+        placeholder="P"
+        id="tb"
+      />
     );
     const input = screen.getByPlaceholderText("P");
     const descId = input.getAttribute("aria-describedby");
@@ -129,8 +170,15 @@ describe("Textbox", () => {
     expect(document.getElementById(descId!)).toHaveTextContent("Help text");
   });
 
-  it("associates error with input via aria-describedby when error set", () => {
-    render(<Textbox error="Error message" placeholder="P" id="tb" />);
+  it("associates errorText with input via aria-describedby", () => {
+    render(
+      <Textbox
+        errorText="Error message"
+        showDescription
+        placeholder="P"
+        id="tb"
+      />
+    );
     const input = screen.getByPlaceholderText("P");
     const describedBy = input.getAttribute("aria-describedby");
     expect(describedBy).toBeTruthy();
