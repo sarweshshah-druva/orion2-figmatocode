@@ -86,8 +86,8 @@ function TextboxStoryWrapper({
 }
 
 const meta = {
-  id: "components-textbox",
-  title: "Components/Textbox",
+  id: "textboxes-textbox",
+  title: "Components/Textboxes/Textbox",
   component: TextboxStoryWrapper,
   decorators: [
     (Story) => (

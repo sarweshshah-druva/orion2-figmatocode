@@ -138,7 +138,7 @@
   --bg-colored-accent: rgb(238, 245, 255);
   --border-neutral-input: rgb(230, 230, 231);
   --border-neutral-input-bold: rgb(175, 184, 193);
-  --border-neutral-subtle: rgb(208, 215, 222);
+  --border-neutral-subtle: rgba(0, 0, 0, 0.05);
   --border-neutral-auxillary: rgb(175, 184, 193);
   --border-neutral-disabled: rgba(0, 0, 0, 0.1);
   --border-neutral-overlay: rgb(208, 215, 222);
@@ -305,7 +305,7 @@
   --bg-colored-accent: rgb(3, 12, 21);
   --border-neutral-input: rgb(66, 74, 83);
   --border-neutral-input-bold: rgb(87, 96, 106);
-  --border-neutral-subtle: rgb(50, 56, 63);
+  --border-neutral-subtle: rgba(255, 255, 255, 0.05);
   --border-neutral-auxillary: rgb(66, 74, 83);
   --border-neutral-disabled: rgb(22, 27, 34);
   --border-neutral-overlay: rgb(50, 56, 63);

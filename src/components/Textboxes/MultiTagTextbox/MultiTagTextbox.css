@@ -1,0 +1,65 @@
+/**
+ * Multi-tag Textbox – layout, typography, and states via design tokens only.
+ * Orion v2.0 (Figma node 145-7349).
+ */
+
+.orion-multi-tag-textbox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  width: 100%;
+  max-width: 100%;
+}
+
+.orion-multi-tag-textbox__container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-input-default);
+}
+
+.orion-multi-tag-textbox--disabled .orion-multi-tag-textbox__container {
+  border-color: var(--border-neutral-disabled);
+  background-color: var(--bg-input-disabled);
+}
+
+.orion-multi-tag-textbox__tags {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-height: 0;
+  min-width: 0;
+}
+
+.orion-multi-tag-textbox__dropdown {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-neutral-tertiary);
+}
+
+.orion-multi-tag-textbox--disabled .orion-multi-tag-textbox__dropdown {
+  color: var(--icon-neutral-disabled);
+}
+
+.orion-multi-tag-textbox__description {
+  font-family: var(--font-captions-x-small-family);
+  font-size: var(--font-captions-x-small-size);
+  font-weight: var(--font-captions-x-small-weight);
+  line-height: var(--font-captions-x-small-line-height);
+  letter-spacing: var(--font-captions-x-small-letter-spacing);
+  color: var(--text-neutral-tertiary);
+  margin: var(--spacing-none);
+}
+
+.orion-multi-tag-textbox--disabled .orion-multi-tag-textbox__description {
+  color: var(--text-neutral-disabled);
+}
