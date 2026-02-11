@@ -29,8 +29,8 @@ export const semanticColorsLight = {
 
   // Background – input
   "bg.input.default": white.full,
-  "bg.input.disabled": grey[100],
-  "bg.input.inset": grey[100],
+  "bg.input.disabled": grey[50],
+  "bg.input.inset": grey[300],
 
   // Background – list-item
   "bg.list-item.default": "transparent",
@@ -39,7 +39,7 @@ export const semanticColorsLight = {
   "bg.list-item.selected-hover": blue[100],
 
   // Background – element
-  "bg.element.default": grey[100],
+  "bg.element.default": grey[50],
   "bg.element.default-hover": grey[200],
   "bg.element.subtle": grey[50],
   "bg.element.subtle-hover": grey[100],
@@ -47,7 +47,7 @@ export const semanticColorsLight = {
   // Background – action
   "bg.action.primary": blue[500],
   "bg.action.primary-hover": blue[600],
-  "bg.action.secondary": grey[100],
+  "bg.action.secondary": white.full,
   "bg.action.secondary-hover": grey[200],
   "bg.action.tertiary": "transparent",
   "bg.action.tertiary-hover": grey[50],
@@ -60,7 +60,7 @@ export const semanticColorsLight = {
   "bg.status.danger-subtle": red[50],
   "bg.status.danger-solid": red[500],
   "bg.status.danger-solid-hover": red[600],
-  "bg.status.info-subtle": blue[50],
+  "bg.status.info-subtle": "rgb(211, 227, 240)",
 
   // Background – colored
   "bg.colored.accent": blue[50],
@@ -75,7 +75,7 @@ export const semanticColorsLight = {
 
   // Border – colored
   "border.colored.brand": blue[500],
-  "border.colored.focused": blue[500],
+  "border.colored.focused": blue[400],
   "border.colored.selected": blue[500],
   "border.colored.success-subtle": green[200],
   "border.colored.warning-subtle": amber[200],

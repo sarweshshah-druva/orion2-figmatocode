@@ -45,17 +45,17 @@ export const semanticColorsDark = {
   "bg.action.tertiary-hover": grey[900],
 
   // Background – status
-  "bg.status.success-subtle": green[950],
+  "bg.status.success-subtle": green[900],
   "bg.status.success-solid": green[400],
   "bg.status.success-solid-hover": green[300],
-  "bg.status.warning-subtle": amber[950],
-  "bg.status.danger-subtle": red[950],
+  "bg.status.warning-subtle": amber[900],
+  "bg.status.danger-subtle": red[900],
   "bg.status.danger-solid": red[400],
   "bg.status.danger-solid-hover": red[300],
-  "bg.status.info-subtle": blue[950],
+  "bg.status.info-subtle": blue[900],
 
   // Background – colored
-  "bg.colored.accent": blue[950],
+  "bg.colored.accent": blue[900],
 
   // Border – neutral
   "border.neutral.input": grey[700],

@@ -159,6 +159,10 @@ export const LabelOnly: Story = {
 
 /** All six states: top row enabled (unchecked, checked, indeterminate), bottom row disabled. Matches Figma 829-667. */
 export const AllStates: Story = {
+  args: {
+    label: "",
+    state: "unchecked",
+  },
   render: () => (
     <div
       style={{
@@ -224,6 +228,10 @@ function CheckboxGroupStory() {
 }
 
 export const CheckboxGroup: Story = {
+  args: {
+    label: "",
+    state: "unchecked",
+  },
   render: () => <CheckboxGroupStory />,
   parameters: {
     docs: {

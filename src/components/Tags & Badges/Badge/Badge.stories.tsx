@@ -201,7 +201,10 @@ export const Count: Story = {
     label: "3",
     variant: "neutral",
     showIcon: false,
+    icon: "Settings",
     showEndIcon: false,
+    endIcon: "Settings",
+    disabled: false,
   },
   parameters: {
     docs: {
@@ -213,6 +216,14 @@ export const Count: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {
+    variant: "neutral",
+    showIcon: false,
+    icon: "Settings",
+    showEndIcon: false,
+    endIcon: "Settings",
+    disabled: false,
+  },
   render: () => {
     const SettingsIcon = getLucideIcon("Settings");
     const InfoIcon = getLucideIcon("Info");
@@ -272,6 +283,14 @@ export const Disabled: Story = {
 };
 
 export const WithChildren: Story = {
+  args: {
+    variant: "neutral",
+    showIcon: false,
+    icon: "Settings",
+    showEndIcon: false,
+    endIcon: "Settings",
+    disabled: false,
+  },
   render: () => <Badge variant="neutral">Children content</Badge>,
   parameters: {
     docs: {

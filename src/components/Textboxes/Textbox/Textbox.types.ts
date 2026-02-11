@@ -10,7 +10,7 @@ import type { InputHTMLAttributes } from "react";
 export interface TextboxProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    "size" | "className" | "aria-invalid" | "aria-describedby"
+    "size" | "className" | "aria-invalid"
   > {
   /** descriptionText (Figma): optional helper text below the input. */
   descriptionText?: React.ReactNode;

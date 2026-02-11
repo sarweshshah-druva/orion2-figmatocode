@@ -32,7 +32,7 @@
 /* ----- Variants ----- */
 
 .orion-tag--neutral {
-  background-color: var(--bg-element-subtle);
+  background-color: var(--bg-element-default);
   border-color: var(--border-neutral-subtle);
   color: var(--text-neutral-primary);
 }

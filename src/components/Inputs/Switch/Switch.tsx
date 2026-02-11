@@ -29,7 +29,7 @@ export function Switch({
   const describedBy = [leftDescId, rightDescId].filter(Boolean).join(" ") || undefined;
   const rootClass = ["orion-switch", className].filter(Boolean).join(" ");
 
-  if (import.meta.env?.DEV && leftLabel == null && rightLabel == null) {
+  if ((import.meta as { env?: { DEV?: boolean } }).env?.DEV && leftLabel == null && rightLabel == null) {
     console.error(
       "Switch: At least one of leftLabel or rightLabel must be provided."
     );

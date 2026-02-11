@@ -6,8 +6,8 @@
 
 export type ColorScale = Record<string, string>;
 
-/** Base: black (opacity-based scale) */
-export const black: ColorScale = {
+// Raw values
+const blackValues: ColorScale = {
   40: "rgba(0, 0, 0, 0.04)",
   50: "rgba(0, 0, 0, 0.05)",
   100: "rgba(0, 0, 0, 0.08)",
@@ -22,8 +22,7 @@ export const black: ColorScale = {
   full: "rgb(0, 0, 0)",
 };
 
-/** Base: white (opacity-based scale) */
-export const white: ColorScale = {
+const whiteValues: ColorScale = {
   50: "rgba(255, 255, 255, 0.05)",
   100: "rgba(255, 255, 255, 0.08)",
   200: "rgba(255, 255, 255, 0.12)",
@@ -36,8 +35,7 @@ export const white: ColorScale = {
   full: "rgb(255, 255, 255)",
 };
 
-/** Neutral grey scale */
-export const grey: ColorScale = {
+const greyValues: ColorScale = {
   0: "rgb(255, 255, 255)",
   50: "rgb(245, 245, 245)",
   100: "rgb(234, 238, 242)",
@@ -54,8 +52,7 @@ export const grey: ColorScale = {
   990: "rgb(1, 4, 9)",
 };
 
-/** Brand: blue (primary) */
-export const blue: ColorScale = {
+const blueValues: ColorScale = {
   50: "rgb(244, 248, 251)",
   100: "rgb(218, 232, 255)",
   200: "rgb(184, 212, 255)",
@@ -70,8 +67,7 @@ export const blue: ColorScale = {
   990: "rgb(1, 5, 8)",
 };
 
-/** Brand: orange (secondary) */
-export const orange: ColorScale = {
+const orangeValues: ColorScale = {
   50: "rgb(255, 248, 240)",
   100: "rgb(255, 236, 212)",
   200: "rgb(255, 212, 168)",
@@ -86,9 +82,8 @@ export const orange: ColorScale = {
   990: "rgb(10, 5, 1)",
 };
 
-/** Status: green (success) */
-export const green: ColorScale = {
-  50: "rgb(232, 245, 233)",
+const greenValues: ColorScale = {
+  50: "rgb(212, 237, 218)",
   100: "rgb(200, 230, 201)",
   200: "rgb(165, 214, 167)",
   300: "rgb(129, 199, 132)",
@@ -102,9 +97,8 @@ export const green: ColorScale = {
   990: "rgb(5, 16, 8)",
 };
 
-/** Status: red (danger/error) */
-export const red: ColorScale = {
-  50: "rgb(255, 235, 238)",
+const redValues: ColorScale = {
+  50: "rgb(248, 215, 218)",
   100: "rgb(255, 205, 210)",
   200: "rgb(239, 154, 154)",
   300: "rgb(229, 115, 115)",
@@ -118,9 +112,8 @@ export const red: ColorScale = {
   990: "rgb(13, 6, 6)",
 };
 
-/** Status: amber (warning) */
-export const amber: ColorScale = {
-  50: "rgb(255, 248, 225)",
+const amberValues: ColorScale = {
+  50: "rgb(255, 243, 205)",
   100: "rgb(255, 236, 179)",
   200: "rgb(255, 224, 130)",
   300: "rgb(255, 213, 79)",
@@ -134,6 +127,23 @@ export const amber: ColorScale = {
   990: "rgb(13, 10, 0)",
 };
 
+// Helper to create var references
+function createRefs(name: string, obj: Record<string, string>) {
+  return Object.fromEntries(
+    Object.keys(obj).map((k) => [k, `var(--${name}-${k})`])
+  ) as ColorScale;
+}
+
+/** Reference exports (used by semantic tokens) */
+export const black = createRefs("black", blackValues);
+export const white = createRefs("white", whiteValues);
+export const grey = createRefs("grey", greyValues);
+export const blue = createRefs("blue", blueValues);
+export const orange = createRefs("orange", orangeValues);
+export const green = createRefs("green", greenValues);
+export const red = createRefs("red", redValues);
+export const amber = createRefs("amber", amberValues);
+
 export const primitives = {
   black,
   white,
@@ -144,3 +154,15 @@ export const primitives = {
   red,
   amber,
 } as const;
+
+/** Values export (used by generator) */
+export const colorPrimitiveValues = {
+  black: blackValues,
+  white: whiteValues,
+  grey: greyValues,
+  blue: blueValues,
+  orange: orangeValues,
+  green: greenValues,
+  red: redValues,
+  amber: amberValues,
+};

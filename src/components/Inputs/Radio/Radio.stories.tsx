@@ -155,6 +155,10 @@ function RadioGroupStory() {
 }
 
 export const RadioGroup: Story = {
+  args: {
+    label: "",
+    value: "",
+  },
   render: () => <RadioGroupStory />,
   parameters: {
     docs: {
@@ -168,6 +172,10 @@ export const RadioGroup: Story = {
 
 /** All four states side by side for visual comparison with Figma (node 62-5884). */
 export const AllStates: Story = {
+  args: {
+    label: "",
+    value: "",
+  },
   render: () => (
     <div
       style={{

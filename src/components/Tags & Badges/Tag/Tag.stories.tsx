@@ -198,6 +198,15 @@ export const Info: Story = {
 };
 
 export const AllVariants: Story = {
+  args: {
+    showLabel: false,
+    showValue: false,
+    variant: "neutral",
+    showIcon: false,
+    leftIcon: "Settings",
+    dismissable: false,
+    disabled: false,
+  },
   render: () => {
     const SettingsIcon = getLucideIcon("Settings");
     const icon = SettingsIcon ? <SettingsIcon size={ICON_PX} /> : null;
