@@ -1,20 +1,30 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Checkbox } from "./Checkbox";
 import type { CheckboxState } from "./Checkbox.types";
 
 const STATE_OPTIONS: CheckboxState[] = ["unchecked", "checked", "indeterminate"];
 
+/** Wrapper so the checkbox is interactive: clicks update state and stay in sync with Controls. */
 function CheckboxWithStateControl({
-  state,
+  state: stateProp,
   onStateChange,
   ...props
 }: React.ComponentProps<typeof Checkbox> & { state: CheckboxState; onStateChange?: (s: CheckboxState) => void }) {
+  const [state, setState] = useState<CheckboxState>(stateProp);
+  
+  useEffect(() => {
+    setState(stateProp);
+  }, [stateProp]);
+
   return (
     <Checkbox
       {...props}
       state={state}
-      onStateChange={onStateChange}
+      onStateChange={(newState) => {
+        setState(newState);
+        onStateChange?.(newState);
+      }}
     />
   );
 }

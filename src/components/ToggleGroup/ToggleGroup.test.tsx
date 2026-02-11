@@ -5,7 +5,7 @@ import { ToggleGroup, ToggleGroupItem } from "./index";
 describe("ToggleGroup", () => {
   it("renders items", () => {
     render(
-      <ToggleGroup variant="single" defaultValue="left">
+      <ToggleGroup variant="single" aria-label="Options" defaultValue="left">
         <ToggleGroupItem value="left" label="Left" />
         <ToggleGroupItem value="center" label="Center" />
         <ToggleGroupItem value="right" label="Right" />
@@ -21,6 +21,7 @@ describe("ToggleGroup", () => {
     render(
       <ToggleGroup
         variant="single"
+        aria-label="Options"
         defaultValue="left"
         onValueChange={onValueChange}
       >
@@ -37,6 +38,7 @@ describe("ToggleGroup", () => {
     render(
       <ToggleGroup
         variant="multiple"
+        aria-label="Options"
         defaultValue={[]}
         onValueChange={onValueChange}
       >
@@ -53,6 +55,7 @@ describe("ToggleGroup", () => {
     render(
       <ToggleGroup
         variant="single"
+        aria-label="Options"
         defaultValue="left"
         disabled
         onValueChange={onValueChange}
@@ -67,7 +70,7 @@ describe("ToggleGroup", () => {
 
   it("applies group and item classes", () => {
     const { container } = render(
-      <ToggleGroup variant="single" defaultValue="left">
+      <ToggleGroup variant="single" aria-label="Options" defaultValue="left">
         <ToggleGroupItem value="left" label="Left" />
       </ToggleGroup>
     );

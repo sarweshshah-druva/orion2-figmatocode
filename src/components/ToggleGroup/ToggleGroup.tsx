@@ -10,6 +10,7 @@ import "./ToggleGroup.css";
  */
 export function ToggleGroup({
   variant = "single",
+  "aria-label": ariaLabel,
   value: controlledValue,
   onValueChange,
   defaultValue,
@@ -64,7 +65,7 @@ export function ToggleGroup({
         className={rootClass}
         role={variant === "single" ? "radiogroup" : "group"}
         data-testid={testId}
-        aria-label={variant === "single" ? undefined : undefined}
+        aria-label={ariaLabel}
       >
         {children}
       </div>

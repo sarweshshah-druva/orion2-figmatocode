@@ -24,19 +24,24 @@ export function Avatar({
     .filter(Boolean)
     .join(" ");
 
-  const ariaLabel = alt ?? (initials ? `${initials} avatar` : "Avatar");
+  const hasImage = src != null && src !== "";
+  const imgAlt = alt ?? "";
+  const needsSpanLabel = !hasImage || !imgAlt;
+  const ariaLabel = needsSpanLabel
+    ? (alt ?? (initials ? `${initials} avatar` : "Avatar"))
+    : undefined;
 
   return (
     <span
       className={rootClass}
-      role="img"
+      role={ariaLabel != null ? "img" : undefined}
       aria-label={ariaLabel}
       data-testid={testId}
     >
-      {src != null && src !== "" ? (
+      {hasImage ? (
         <img
           src={src}
-          alt={alt ?? ""}
+          alt={imgAlt}
           className="orion-avatar__image"
           loading="lazy"
           decoding="async"

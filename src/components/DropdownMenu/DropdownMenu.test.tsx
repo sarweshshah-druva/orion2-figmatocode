@@ -130,13 +130,12 @@ describe("Dropdown Category", () => {
     expect(screen.getByText("Category A")).toBeTruthy();
   });
 
-  it("has role=presentation", () => {
-    const { container } = render(
-      <DropdownCategory categoryText="Cat" />
-    );
-    expect(
-      container.querySelector("[role='presentation']")
-    ).not.toBeNull();
+  it("has role=group with aria-labelledby", () => {
+    render(<DropdownCategory categoryText="Cat" />);
+    const group = screen.getByRole("group");
+    expect(group).toBeTruthy();
+    expect(group.getAttribute("aria-labelledby")).toBeTruthy();
+    expect(document.getElementById(group.getAttribute("aria-labelledby")!)).toHaveTextContent("Cat");
   });
 
   it("renders with custom testId", () => {

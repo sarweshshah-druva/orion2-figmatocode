@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { DropdownCategoryProps } from "./DropdownMenu.types";
 
 /**
@@ -9,13 +10,21 @@ export function DropdownCategory({
   className = "",
   testId,
 }: DropdownCategoryProps) {
+  const headingId = useId();
   const rootClass = ["orion-dropdown-category", className]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div className={rootClass} data-testid={testId} role="presentation">
-      <span className="orion-dropdown-category__text">{categoryText}</span>
+    <div
+      className={rootClass}
+      data-testid={testId}
+      role="group"
+      aria-labelledby={headingId}
+    >
+      <span id={headingId} className="orion-dropdown-category__text">
+        {categoryText}
+      </span>
     </div>
   );
 }

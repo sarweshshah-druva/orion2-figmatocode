@@ -12,7 +12,12 @@ export interface ToggleGroupStoryArgs {
 function ToggleGroupDemo({ variant, disabled }: ToggleGroupStoryArgs) {
   if (variant === "single") {
     return (
-      <ToggleGroup variant="single" disabled={disabled} defaultValue="center">
+      <ToggleGroup
+        variant="single"
+        aria-label="Alignment"
+        disabled={disabled}
+        defaultValue="center"
+      >
         <ToggleGroupItem value="left" label="Left" />
         <ToggleGroupItem value="center" label="Center" />
         <ToggleGroupItem value="right" label="Right" />
@@ -20,7 +25,12 @@ function ToggleGroupDemo({ variant, disabled }: ToggleGroupStoryArgs) {
     );
   }
   return (
-    <ToggleGroup variant="multiple" disabled={disabled} defaultValue={["bold"]}>
+    <ToggleGroup
+      variant="multiple"
+      aria-label="Text formatting"
+      disabled={disabled}
+      defaultValue={["bold"]}
+    >
       <ToggleGroupItem value="bold" label="Bold" />
       <ToggleGroupItem value="italic" label="Italic" />
       <ToggleGroupItem value="underline" label="Underline" />
@@ -101,6 +111,7 @@ export const DaysOfWeek: Story = {
   render: () => (
     <ToggleGroup
       variant="multiple"
+      aria-label="Days of week"
       defaultValue={["mon", "tue", "wed", "fri", "sat", "sun"]}
     >
       <ToggleGroupItem

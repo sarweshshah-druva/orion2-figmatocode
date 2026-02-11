@@ -20,6 +20,8 @@ export interface ToggleGroupContextValue {
 export interface ToggleGroupProps {
   /** Variant (Figma 20-612): single = one item at a time, multiple = zero or more selected. */
   variant?: ToggleGroupVariant;
+  /** Accessible name for the group (required for radiogroup, recommended for group). */
+  "aria-label"?: string;
   /** Controlled value. Single: string. Multiple: string[]. */
   value?: string | string[];
   /** Called when selection changes. */

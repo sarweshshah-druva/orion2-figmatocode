@@ -85,6 +85,7 @@ export function DropdownMenuItem({
         role="menuitem"
         aria-disabled={isDisabled || undefined}
         aria-haspopup={hasNestedContent ? "menu" : undefined}
+        aria-expanded={hasNestedContent ? nestedOpen : undefined}
         onClick={isDisabled ? undefined : onClick}
         tabIndex={isDisabled ? -1 : 0}
         onMouseEnter={hasNestedContent ? openNested : undefined}
