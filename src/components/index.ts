@@ -38,6 +38,10 @@ export type {
   MultiTagTextboxProps,
   TagItem,
 } from "./Textboxes/MultiTagTextbox";
+export { InputGroup } from "./Textboxes/InputGroup";
+export type { InputGroupProps } from "./Textboxes/InputGroup";
+export { Select } from "./Textboxes/Select";
+export type { SelectProps } from "./Textboxes/Select";
 export {
   DropdownMenu,
   DropdownMenuItem,

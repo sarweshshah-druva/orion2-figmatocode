@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MultiTagTextbox } from "./MultiTagTextbox";
 import type { TagItem } from "./MultiTagTextbox.types";
 
@@ -14,10 +14,36 @@ const SAMPLE_TAGS: TagItem[] = [
   { label: "type", value: "folder" },
 ];
 
+/** Wrapper so the multi-tag textbox is interactive: clicking X on a tag removes it and state stays in sync with Controls. */
+function MultiTagTextboxStoryWrapper({
+  tags: tagsProp,
+  showDescription,
+  descriptionText,
+  showDropdown,
+  disabled,
+  testId,
+}: React.ComponentProps<typeof MultiTagTextbox>) {
+  const [tags, setTags] = useState<TagItem[]>(tagsProp ?? []);
+  useEffect(() => {
+    setTags(tagsProp ?? []);
+  }, [tagsProp]);
+  return (
+    <MultiTagTextbox
+      tags={tags}
+      onRemove={(index) => setTags((prev) => prev.filter((_, i) => i !== index))}
+      showDescription={showDescription}
+      descriptionText={descriptionText}
+      showDropdown={showDropdown}
+      disabled={disabled}
+      testId={testId}
+    />
+  );
+}
+
 const meta = {
   id: "textboxes-multi-tag-textbox",
   title: "Components/Textboxes/Multi-tag Textbox",
-  component: MultiTagTextbox,
+  component: MultiTagTextboxStoryWrapper,
   decorators: [
     (Story) => (
       <div style={{ width: 380 }}>
@@ -68,7 +94,7 @@ const meta = {
     showDropdown: true,
     disabled: false,
   },
-} satisfies Meta<typeof MultiTagTextbox>;
+} satisfies Meta<typeof MultiTagTextboxStoryWrapper>;
 
 export default meta;
 
@@ -123,27 +149,14 @@ export const WithoutDropdown: Story = {
 
 /** Interactive: tags can be removed by clicking X. */
 export const Interactive: Story = {
-  args: {},
-  render: function InteractiveStory() {
-    const [tags, setTags] = useState<TagItem[]>([...SAMPLE_TAGS]);
-    const handleRemove = (index: number) => {
-      setTags((prev) => prev.filter((_, i) => i !== index));
-    };
-    return (
-      <MultiTagTextbox
-        tags={tags}
-        onRemove={handleRemove}
-        descriptionText="Click X on any tag to remove it"
-        showDescription
-        showDropdown
-      />
-    );
+  args: {
+    descriptionText: "Click X on any tag to remove it",
   },
   parameters: {
     docs: {
       description: {
         story:
-          "Interactive demo: tags are removable. Click the X button on any tag.",
+          "All stories are interactive: click the X button on any tag to remove it (except when disabled).",
       },
     },
   },

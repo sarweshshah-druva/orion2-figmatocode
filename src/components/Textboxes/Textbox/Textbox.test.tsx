@@ -85,34 +85,29 @@ describe("Textbox", () => {
     expect(screen.queryByTestId("leading-icon")).not.toBeInTheDocument();
   });
 
-  it("shows dropdown chevron when showDropdown and no value (Default state)", () => {
-    const { container } = render(
-      <Textbox showDropdown placeholder="P" />
-    );
-    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
+  it("does not show clear button when input has no value", () => {
+    const { container } = render(<Textbox placeholder="P" />);
     expect(container.querySelector(".orion-textbox__clear")).toBeNull();
   });
 
-  it("shows clear X instead of dropdown when input has value (Filled state)", () => {
+  it("shows clear X when input has value and not disabled/readOnly (Filled state)", () => {
     const { container } = render(
-      <Textbox showDropdown placeholder="P" value="hello" onChange={() => {}} />
+      <Textbox placeholder="P" value="hello" onChange={() => {}} />
     );
     expect(container.querySelector(".orion-textbox__clear")).not.toBeNull();
-    expect(container.querySelector(".orion-textbox__dropdown")).toBeNull();
   });
 
-  it("shows dropdown when disabled even with showDropdown", () => {
+  it("does not show clear button when disabled", () => {
     const { container } = render(
-      <Textbox showDropdown placeholder="P" disabled />
+      <Textbox placeholder="P" value="text" disabled />
     );
-    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
+    expect(container.querySelector(".orion-textbox__clear")).toBeNull();
   });
 
-  it("shows dropdown when readOnly even with value", () => {
+  it("does not show clear button when readOnly even with value", () => {
     const { container } = render(
-      <Textbox showDropdown placeholder="P" value="text" readOnly />
+      <Textbox placeholder="P" value="text" readOnly />
     );
-    expect(container.querySelector(".orion-textbox__dropdown")).not.toBeNull();
     expect(container.querySelector(".orion-textbox__clear")).toBeNull();
   });
 

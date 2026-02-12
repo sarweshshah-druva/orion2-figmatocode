@@ -43,7 +43,6 @@ export interface TextboxStoryProps {
   descriptionText?: string;
   errorText?: string;
   showDescription: boolean;
-  showDropdown: boolean;
   showLeftIcon: boolean;
   leftIcon: IconName;
   placeholder?: string;
@@ -53,11 +52,11 @@ export interface TextboxStoryProps {
   testId?: string;
 }
 
+/** Wrapper so the textbox is interactive: typing and clear update state and stay in sync with Controls. */
 function TextboxStoryWrapper({
   descriptionText,
   errorText,
   showDescription,
-  showDropdown,
   showLeftIcon,
   leftIcon,
   placeholder,
@@ -66,6 +65,10 @@ function TextboxStoryWrapper({
   readOnly,
   testId,
 }: TextboxStoryProps) {
+  const [internalValue, setInternalValue] = useState(value ?? "");
+  useEffect(() => {
+    setInternalValue(value ?? "");
+  }, [value]);
   const IconComponent = showLeftIcon ? getLucideIcon(leftIcon) : null;
   const iconNode = IconComponent ? <IconComponent size={ICON_PX} /> : undefined;
   return (
@@ -73,11 +76,12 @@ function TextboxStoryWrapper({
       descriptionText={descriptionText}
       errorText={errorText}
       showDescription={showDescription}
-      showDropdown={showDropdown}
       showLeftIcon={showLeftIcon}
       leftIcon={iconNode}
       placeholder={placeholder}
-      value={value}
+      value={internalValue}
+      onChange={(e) => setInternalValue(e.target.value)}
+      onClear={() => setInternalValue("")}
       disabled={disabled}
       readOnly={readOnly}
       testId={testId}
@@ -101,7 +105,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Textbox – single-line input. Trailing slot is built-in: dropdown chevron (Default/Disabled/Read-Only) or clear X (Filled/Focused/Error). Figma 851-25000, 851-24737. Use Lucide React for leftIcon.",
+          "Textbox – single-line input. No dropdown icon. Trailing slot: clear X only when has value. Figma 851-25000, 851-24737. Use Lucide React for leftIcon.",
       },
     },
   },
@@ -119,10 +123,6 @@ const meta = {
     errorText: {
       control: "text",
       description: "errorText (Figma): error message, enables error state",
-    },
-    showDropdown: {
-      control: "boolean",
-      description: "showDropdown (Figma): show trailing chevron in Default/Disabled/Read-Only",
     },
     showLeftIcon: {
       control: "boolean",
@@ -158,7 +158,6 @@ const meta = {
   args: {
     showDescription: true,
     descriptionText: "Description text will come here",
-    showDropdown: true,
     showLeftIcon: true,
     leftIcon: "Search",
     placeholder: "Label Text",
@@ -205,7 +204,6 @@ export const Focused: Story = {
         ref={inputRef}
         descriptionText="Description text will come here"
         showDescription
-        showDropdown
         showLeftIcon
         leftIcon={<LucideIcons.Search size={ICON_PX} />}
         placeholder="Label Text"
@@ -224,14 +222,14 @@ export const Focused: Story = {
   },
 };
 
-/** Figma State=Disabled: dimmed text, left icon, dropdown chevron, description. */
+/** Figma State=Disabled: dimmed text, left icon, description. */
 export const Disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-/** Figma State=Read-Only: secondary text, left icon, dropdown chevron, description. */
+/** Figma State=Read-Only: secondary text, left icon, description. */
 export const ReadOnly: Story = {
   args: {
     value: "Label Text",
@@ -240,7 +238,7 @@ export const ReadOnly: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Read-only state: value visible but not editable, dropdown chevron shown.",
+        story: "Read-only state: value visible but not editable.",
       },
     },
   },
@@ -273,18 +271,6 @@ export const WithoutDescription: Story = {
   },
 };
 
-/** showDropdown=false: no chevron in default state. */
-export const WithoutDropdown: Story = {
-  args: {
-    showDropdown: false,
-  },
-  parameters: {
-    docs: {
-      description: { story: "showDropdown=false hides trailing chevron." },
-    },
-  },
-};
-
 /** All six Figma states side by side. */
 export const AllStates: Story = {
   args: {},
@@ -308,7 +294,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           descriptionText="Description text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
         />
@@ -317,7 +302,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           descriptionText="Description text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
           value="Label Text"
@@ -330,7 +314,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           descriptionText="Description text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
           value={focusedVal}
@@ -342,7 +325,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           descriptionText="Description text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
           disabled
@@ -352,7 +334,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           descriptionText="Description text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
           value="Label Text"
@@ -363,7 +344,6 @@ export const AllStates: Story = {
           placeholder="Label Text"
           errorText="Error text will come here"
           showDescription
-          showDropdown
           showLeftIcon
           leftIcon={<LucideIcons.Search size={ICON_PX} />}
           value="Label Text"

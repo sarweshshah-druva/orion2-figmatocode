@@ -1,0 +1,198 @@
+/**
+ * InputGroup – Orion v2.0 (Figma node 94-4794).
+ * Compound input with leading/trailing dropdown segments sharing one border.
+ * Uses design tokens only.
+ */
+
+/* ── Root ── */
+.orion-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  margin: var(--spacing-none);
+  padding: var(--spacing-none);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ── Shared border container ── */
+.orion-input-group__container {
+  display: flex;
+  align-items: stretch;
+  border: var(--radius-2xs) solid var(--border-neutral-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-input-default);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Focused */
+.orion-input-group__container:focus-within {
+  border: 2px solid var(--border-colored-focused);
+}
+
+/* Error */
+.orion-input-group--error .orion-input-group__container {
+  border-color: var(--border-colored-error);
+}
+
+.orion-input-group--error .orion-input-group__container:focus-within {
+  border: 2px solid var(--border-colored-error);
+}
+
+/* Disabled */
+.orion-input-group--disabled .orion-input-group__container {
+  border-color: var(--border-neutral-disabled);
+  background-color: var(--bg-input-disabled);
+}
+
+/* Read-Only */
+.orion-input-group--read-only .orion-input-group__container {
+  background-color: var(--bg-input-disabled);
+  cursor: default;
+}
+
+/* ── Vertical divider between segments ── */
+.orion-input-group__divider {
+  flex-shrink: 0;
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--border-neutral-input);
+}
+
+.orion-input-group--disabled .orion-input-group__divider {
+  background-color: var(--border-neutral-disabled);
+}
+
+/* ── Dropdown segments (leading & trailing) ── */
+.orion-input-group__dropdown {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-none) var(--spacing-4);
+  border: none;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: var(--text-neutral-primary);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  transition: background-color 0.15s ease;
+}
+
+.orion-input-group__dropdown:hover:not(:disabled) {
+  background-color: var(--bg-element-subtle);
+}
+
+.orion-input-group__dropdown:focus-visible {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: calc(-1 * var(--spacing-1));
+  border-radius: var(--radius-xs);
+}
+
+.orion-input-group__dropdown:disabled {
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+.orion-input-group--read-only .orion-input-group__dropdown {
+  color: var(--text-neutral-secondary);
+  cursor: default;
+}
+
+.orion-input-group__dropdown-label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.orion-input-group__dropdown svg {
+  flex-shrink: 0;
+  color: var(--icon-neutral-tertiary);
+}
+
+.orion-input-group--disabled .orion-input-group__dropdown svg {
+  color: var(--icon-neutral-disabled);
+}
+
+/* ── Input area ── */
+.orion-input-group__input-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: var(--spacing-2);
+  padding: var(--spacing-none) var(--spacing-4);
+}
+
+.orion-input-group__input {
+  flex: 1;
+  min-width: 0;
+  margin: var(--spacing-none);
+  padding: var(--spacing-4) var(--spacing-1);
+  border: none;
+  background: none;
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+}
+
+.orion-input-group__input::placeholder {
+  color: var(--text-neutral-ghost);
+}
+
+.orion-input-group__input:disabled {
+  color: var(--text-neutral-disabled);
+  cursor: not-allowed;
+}
+
+.orion-input-group--read-only .orion-input-group__input {
+  color: var(--text-neutral-secondary);
+  cursor: default;
+}
+
+.orion-input-group__input:focus {
+  outline: none;
+}
+
+/* ── Clear button ── */
+.orion-input-group__clear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-1);
+  margin: calc(-1 * var(--spacing-1));
+  border: none;
+  border-radius: var(--radius-xs);
+  background: none;
+  color: var(--icon-neutral-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.orion-input-group__clear:hover {
+  color: var(--icon-neutral-primary);
+  background-color: var(--bg-element-subtle);
+}
+
+.orion-input-group__clear:focus-visible {
+  outline: var(--spacing-1) solid var(--border-colored-focused);
+  outline-offset: var(--spacing-1);
+}
+
+/* ── Error text ── */
+.orion-input-group__error {
+  font-family: var(--font-captions-x-small-family);
+  font-size: var(--font-captions-x-small-size);
+  font-weight: var(--font-captions-x-small-weight);
+  line-height: var(--font-captions-x-small-line-height);
+  letter-spacing: var(--font-captions-x-small-letter-spacing);
+  color: var(--text-colored-error);
+  margin: var(--spacing-none);
+}

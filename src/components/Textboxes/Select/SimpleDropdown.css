@@ -1,0 +1,57 @@
+/**
+ * SimpleDropdown – Simple dropdown menu for Textbox and Select components.
+ * Uses design tokens only.
+ */
+
+.orion-simple-dropdown {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-none);
+  padding: var(--spacing-4) var(--spacing-none);
+  border: 1px solid var(--border-neutral-overlay);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-surface-default);
+  box-shadow:
+    var(--elevation-raised-shadows-1),
+    var(--elevation-raised-shadows-2);
+  max-height: 320px;
+  overflow-x: clip;
+  overflow-y: auto;
+}
+
+.orion-simple-dropdown__item {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  padding: var(--spacing-2) var(--spacing-4);
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  font-weight: var(--font-body-medium-weight);
+  line-height: var(--font-body-medium-line-height);
+  letter-spacing: var(--font-body-medium-letter-spacing);
+  color: var(--text-neutral-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.orion-simple-dropdown__empty {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: var(--font-body-medium-family);
+  font-size: var(--font-body-medium-size);
+  color: var(--text-neutral-tertiary);
+}
+
+.orion-simple-dropdown__item:hover {
+  background-color: var(--bg-list-item-default-hover);
+}
+
+.orion-simple-dropdown__item:focus-visible {
+  outline: 2px solid var(--border-colored-focused);
+  outline-offset: -2px;
+  border-radius: var(--radius-xs);
+}
