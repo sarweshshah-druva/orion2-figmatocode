@@ -27,20 +27,20 @@ const categoricalLight = {
 
 /** Categorical palette – dark theme: resolved rgb only, lighter/brighter for dark backgrounds. */
 const categoricalDark = {
-  "dataviz.categorical.1": "rgb(84, 174, 255)",
-  "dataviz.categorical.2": "rgb(255, 153, 64)",
-  "dataviz.categorical.3": "rgb(86, 211, 100)",
-  "dataviz.categorical.4": "rgb(163, 113, 247)",
-  "dataviz.categorical.5": "rgb(227, 179, 65)",
-  "dataviz.categorical.6": "rgb(121, 192, 255)",
-  "dataviz.categorical.7": "rgb(212, 167, 44)",
-  "dataviz.categorical.8": "rgb(140, 149, 159)",
-  "dataviz.categorical.9": "rgb(56, 139, 253)",
-  "dataviz.categorical.10": "rgb(255, 123, 114)",
-  "dataviz.categorical.11": "rgb(63, 185, 80)",
-  "dataviz.categorical.12": "rgb(163, 113, 247)",
-  "dataviz.categorical.13": "rgb(227, 179, 65)",
-  "dataviz.categorical.14": "rgb(140, 149, 159)",
+  "dataviz.categorical.1": "rgb(39, 135, 188)",
+  "dataviz.categorical.2": "rgb(196, 173, 91)",
+  "dataviz.categorical.3": "rgb(97, 97, 220)",
+  "dataviz.categorical.4": "rgb(64, 161, 138)",
+  "dataviz.categorical.5": "rgb(209, 84, 142)",
+  "dataviz.categorical.6": "rgb(133, 145, 48)",
+  "dataviz.categorical.7": "rgb(236, 135, 119)",
+  "dataviz.categorical.8": "rgb(116, 142, 150)",
+  "dataviz.categorical.9": "rgb(141, 110, 99)",
+  "dataviz.categorical.10": "rgb(65, 147, 135)",
+  "dataviz.categorical.11": "rgb(194, 123, 56)",
+  "dataviz.categorical.12": "rgb(94, 154, 228)",
+  "dataviz.categorical.13": "rgb(173, 94, 209)",
+  "dataviz.categorical.14": "rgb(158, 158, 158)",
 } as const;
 
 export const datavizLight = {
@@ -59,16 +59,16 @@ export const datavizLight = {
 } as const;
 
 export const datavizDark = {
-  "dataviz.sequential.blue.1": blue[900],
-  "dataviz.sequential.blue.2": blue[800],
-  "dataviz.sequential.blue.3": blue[600],
-  "dataviz.sequential.blue.4": blue[400],
-  "dataviz.sequential.blue.5": blue[300],
-  "dataviz.sequential.blue.6": blue[200],
+  "dataviz.sequential.blue.1": "rgb(180, 231, 252)",
+  "dataviz.sequential.blue.2": "rgb(153, 212, 243)",
+  "dataviz.sequential.blue.3": "rgb(127, 193, 233)",
+  "dataviz.sequential.blue.4": "rgb(102, 174, 223)",
+  "dataviz.sequential.blue.5": "rgb(79, 155, 214)",
+  "dataviz.sequential.blue.6": "rgb(54, 135, 203)",
   ...categoricalDark,
-  "dataviz.status.1": red[400],
-  "dataviz.status.2": green[400],
-  "dataviz.status.3": amber[400],
-  "dataviz.status.4": blue[400],
-  "dataviz.status.5": grey[400],
+  "dataviz.status.1": "rgb(157, 40, 51)",
+  "dataviz.status.2": "rgb(36, 143, 60)",
+  "dataviz.status.3": "rgb(182, 138, 8)",
+  "dataviz.status.4": "rgb(30, 98, 155)",
+  "dataviz.status.5": "rgba(255, 255, 255, 0.5)",
 } as const;
