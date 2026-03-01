@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["/**/*.{tsx,jsx}"],
+    "label": "React",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/Pmu14DBkksDbOHAfcOt2k4/Orion-v2.0?node-id=555-16989&m=dev&ready-for-dev=1"
+  }
+}
