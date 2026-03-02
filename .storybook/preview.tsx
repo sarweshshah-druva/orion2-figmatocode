@@ -31,24 +31,24 @@ const preview: Preview = {
       storySort: (a, b) => {
         const aTitle = a.title || "";
         const bTitle = b.title || "";
-        
+
         // Split titles by '/' to get path segments
         const aParts = aTitle.split("/");
         const bParts = bTitle.split("/");
-        
+
         // Count depth (number of segments)
         const aDepth = aParts.length;
         const bDepth = bParts.length;
-        
+
         // Determine if it's a folder (3+ segments) or independent component (2 segments)
         const aIsFolder = aDepth >= 3;
         const bIsFolder = bDepth >= 3;
-        
+
         // Folders first (aIsFolder=true comes before bIsFolder=false)
         if (aIsFolder !== bIsFolder) {
           return aIsFolder ? -1 : 1;
         }
-        
+
         // If same type (both folders or both independent), sort alphabetically
         return aTitle.localeCompare(bTitle);
       },
