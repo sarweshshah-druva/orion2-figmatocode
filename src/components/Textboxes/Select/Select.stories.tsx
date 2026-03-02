@@ -56,7 +56,7 @@ const meta = {
   component: SelectStoryWrapper,
   decorators: [
     (Story) => (
-      <div style={{ width: 348, minHeight: 320 }}>
+      <div style={{ width: 348, minHeight: 50 }}>
         <Story />
       </div>
     ),
@@ -160,7 +160,8 @@ export const Focused: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Focused state: blue border. Open dropdown and select an option.",
+        story:
+          "Focused state: blue border. Open dropdown and select an option.",
       },
     },
   },
